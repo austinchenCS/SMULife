@@ -1,1 +1,1 @@
-This is where frontend goes
+This is the frontend folder.

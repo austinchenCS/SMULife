@@ -1,2 +1,2 @@
 # NewtonsEye
-This is the master branch.
+This is the staging branch.

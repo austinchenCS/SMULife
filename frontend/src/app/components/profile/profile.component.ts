@@ -1,3 +1,5 @@
+
+import { Student, Ra } from './../../domain';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  private student: Student;
+  private edit= false;
+  private ra: Ra = {};
+  constructor() {
 
-  constructor() { }
+   }
 
+  private editSwitch() {
+    this.edit=!this.edit;
+  }
   ngOnInit() {
   }
 

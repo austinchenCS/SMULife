@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
-
+/*
   constructor( private http: HttpClient ) { 
     this.http.get('http://13.58.69.120/RAfeedback?ra_id=12345678').subscribe(data => {
       // Read the result field from the JSON response.
@@ -15,7 +15,7 @@ export class FrontpageComponent implements OnInit {
       console.log(random);
     });
   }
-
+*/
   ngOnInit() {
   }
 

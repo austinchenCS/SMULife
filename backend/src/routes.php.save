@@ -1,0 +1,41 @@
+<?php
+
+use Slim\Http\Request;
+use Slim\Http\Response;
+
+// Routes
+
+
+
+// get all todos
+    $app->get('/todos', function ($request, $response, $args) {
+      
+	$query = $_GET["query"]; //Get query from parameter
+	if(empty($query)){
+		$query = "select * from test;";
+	}
+        $sth = $this->db->prepare($query);
+        $sth->execute();
+	try
+	{
+       		$todos = $sth->fetchAll();
+	}
+	catch(PDOException $e)
+	{
+		$todos = 'Query Submitted';
+	}
+//$todos =0;     
+  return $this->response->withJson($todos);
+    });
+
+
+	
+
+
+    $app->get('/[{name}]', function (Request $request, Response $response, array $args) {
+        // Sample log message
+        $this->logger->info("Slim-Skeleton '/' route");
+
+        // Render index view
+        return $this->renderer->render($response, 'index.phtml', $args);
+    });

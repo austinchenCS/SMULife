@@ -22,7 +22,7 @@
                   <i class="fa fa-user">
                   </i>
                 </div>
-                <input id="Room Number" name="Room Number" type="text" placeholder="Room Number" class="form-control input-md">
+                <input id="Room Number" name="Room Number" type="text" [(ngModel)]="ra.roomNumber" placeholder="Room Number" class="form-control input-md">
               </div>
 
 
@@ -37,7 +37,7 @@
                   <i class="fa fa-user">
                   </i>
                 </div>
-                <input id="Floor" name="Floor" type="text" placeholder="Floor" class="form-control input-md">
+                <input id="Floor" name="Floor" type="text" placeholder="Floor" [(ngModel)]="ra.floorNumber" class="form-control input-md">
               </div>
 
 
@@ -48,7 +48,7 @@
 
           <!-- Text input-->
           <div class="form-group">
-            <label class=" control-label" for="Name(full name)">Name(full name)</label>
+            <label class=" control-label"  for="Name(full name)">Name(full name)</label>
             <div class="">
 
               <div class="input-group">
@@ -56,7 +56,7 @@
                   <i class="fa fa-birthday-cake"></i>
 
                 </div>
-                <input id="Name(full name)" name="Name(full name)" type="text" placeholder="Name(full name)" class="form-control input-md">
+                <input id="Name(full name)" name="Name(full name)"  [(ngModel)]="ra.name" type="text" placeholder="Name(full name)" class="form-control input-md">
               </div>
 
 
@@ -73,7 +73,7 @@
                   <i class="fa fa-male" style="font-size: 20px;"></i>
 
                 </div>
-                <input id="ID Number" name="ID Number" type="text" placeholder="ID Number" class="form-control input-md">
+                <input id="ID Number" name="ID Number" [(ngModel)]="ra.studentId" type="text" placeholder="ID Number" class="form-control input-md">
 
               </div>
 
@@ -89,7 +89,7 @@
                   <i class="fa fa-female" style="font-size: 20px;"></i>
 
                 </div>
-                <input id="Email" name="Email" type="text" placeholder="Email" class="form-control input-md">
+                <input id="Email" name="Email" [(ngModel)]="ra.email" type="text" placeholder="Email" class="form-control input-md">
 
               </div>
             </div>
@@ -103,7 +103,7 @@
                   <i class="fa fa-female" style="font-size: 20px;"></i>
 
                 </div>
-                <input id="ECName" name="ECName" type="text" placeholder="Name" class="form-control input-md">
+                <input id="ECName" name="ECName" [(ngModel)]="ra.emergencyContactName" type="text" placeholder="Name" class="form-control input-md">
 
               </div>
             </div>
@@ -117,7 +117,7 @@
                   <i class="fa fa-female" style="font-size: 20px;"></i>
 
                 </div>
-                <input id="ECPhoneNumber" name="ECPhoneNumber" type="text" placeholder="Phone Number" class="form-control input-md">
+                <input id="ECPhoneNumber" name="ECPhoneNumber" [(ngModel)]="ra.emergencyContactNumber" type="text" placeholder="Phone Number" class="form-control input-md">
 
               </div>
             </div>
@@ -126,7 +126,7 @@
           <!-- Multiple Radios (inline) -->
           <div class="form-group">
             <label for="relationship">Select Relationship:</label>
-            <select class="form-control" id="relationship">
+            <select class="form-control" name="emergency relation" [(ngModel)]="ra.emergencyContactRelation" id="relationship">
               <option>Father</option>
               <option>Mother</option>
               <option>Brother</option>
@@ -150,7 +150,7 @@
                   <i class="fa fa-user">
                   </i>
                 </div>
-                <input id="Room Number" name="Room Number" type="text" placeholder="Room Number" class="form-control input-md">
+                <input id="Room Number" name="Room Number" [(ngModel)]="student.roomNumber" type="text" placeholder="Room Number" class="form-control input-md">
               </div>
 
 
@@ -169,7 +169,7 @@
                   <i class="fa fa-birthday-cake"></i>
 
                 </div>
-                <input id="Name(full name)" name="Name(full name)" type="text" placeholder="Name(full name)" class="form-control input-md">
+                <input id="Name(full name)" name="Name(full name)"  [(ngModel)]="student.name" type="text" placeholder="Name(full name)" class="form-control input-md">
               </div>
 
 
@@ -186,7 +186,7 @@
                   <i class="fa fa-male" style="font-size: 20px;"></i>
 
                 </div>
-                <input id="ID Number" name="ID Number" type="text" placeholder="ID Number" class="form-control input-md">
+                <input id="ID Number" name="ID Number" type="text" [(ngModel)]="student.studentId" placeholder="ID Number" class="form-control input-md">
 
               </div>
 
@@ -202,7 +202,7 @@
                   <i class="fa fa-female" style="font-size: 20px;"></i>
 
                 </div>
-                <input id="Email" name="Email" type="text" placeholder="Email" class="form-control input-md">
+                <input id="Email" name="Email" type="text" placeholder="Email" [(ngModel)]="student.email" class="form-control input-md">
 
               </div>
             </div>
@@ -216,7 +216,7 @@
                   <i class="fa fa-female" style="font-size: 20px;"></i>
 
                 </div>
-                <input id="ECName" name="ECName" type="text" placeholder="Name" class="form-control input-md">
+                <input id="ECName" name="ECName" type="text" placeholder="Name" [(ngModel)]="student.emergencyContactName" class="form-control input-md">
 
               </div>
             </div>
@@ -230,7 +230,7 @@
                   <i class="fa fa-female" style="font-size: 20px;"></i>
 
                 </div>
-                <input id="ECPhoneNumber" name="ECPhoneNumber" type="text" placeholder="Phone Number" class="form-control input-md">
+                <input id="ECPhoneNumber" name="ECPhoneNumber" type="text" [(ngModel)]="student.emergencyContactNumber" placeholder="Phone Number" class="form-control input-md">
 
               </div>
             </div>
@@ -238,7 +238,7 @@
 
           <div class="form-group">
             <label for="relationship">Select Relationship:</label>
-            <select class="form-control" id="relationship">
+            <select class="form-control" id="relationship" name="ecrelation"[(ngModel)]="student.emergencyContactRelation">
               <option>Father</option>
               <option>Mother</option>
               <option>Brother</option>
@@ -254,5 +254,6 @@
 
   </div>
 
-
+<div>{{ra | json}}</div>
+<div>{{student | json}}</div>
 </div>

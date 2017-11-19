@@ -10,8 +10,8 @@ import { RouterModule } from '@angular/router';
 import { DomainModule } from '../domain';
 import { COMPONENTS_ROUTES } from './components-routes';
 import { OrderComponent } from './order/order.component';
+import { EventsComponent } from './events/events.component';
 import { SignupComponent } from './signup/signup.component';
-
 @NgModule({
     imports: [
         BrowserModule,
@@ -26,6 +26,7 @@ import { SignupComponent } from './signup/signup.component';
         ProfileComponent,
         ResidentsPageComponent,
         OrderComponent,
+        EventsComponent,
         SignupComponent
     ],
     exports: [

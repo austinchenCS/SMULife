@@ -5,3 +5,6 @@ html {
 body {
     margin-bottom: 60px;
  }
+.view {
+    background-color: rgb(237, 237, 230);
+}

@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { ComponentsModule } from './components';
 
 
-const defaultRoute = 'profile';
+const defaultRoute = 'frontpage';
 @NgModule({
   declarations: [
     AppComponent,

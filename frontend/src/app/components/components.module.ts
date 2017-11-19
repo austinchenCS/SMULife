@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DomainModule } from '../domain';
 import { COMPONENTS_ROUTES } from './components-routes';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { COMPONENTS_ROUTES } from './components-routes';
         FooterComponent,
         FrontpageComponent,
         ProfileComponent,
-        ResidentsPageComponent
+        ResidentsPageComponent,
+        OrderComponent
     ],
     exports: [
     ]

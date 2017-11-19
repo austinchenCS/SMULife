@@ -6,26 +6,23 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { ResidentsPageComponent } from './components/residents-page/residents-page.component';
+import { ComponentsModule } from './components';
 
+
+const defaultRoute = 'profile';
 @NgModule({
   declarations: [
     AppComponent,
-    FrontpageComponent,
-    FrontpageComponent,
-    HeaderComponent,
-    FooterComponent,
-    ProfileComponent,
-    ResidentsPageComponent
 
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ComponentsModule,    
+    RouterModule.forRoot([
+      { path: '', redirectTo: defaultRoute, pathMatch: 'full' }
+  ])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { DomainModule } from '../domain';
 import { COMPONENTS_ROUTES } from './components-routes';
 import { OrderComponent } from './order/order.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { OrderComponent } from './order/order.component';
         FrontpageComponent,
         ProfileComponent,
         ResidentsPageComponent,
-        OrderComponent
+        OrderComponent,
+        SignupComponent
     ],
     exports: [
     ]

@@ -11,7 +11,11 @@
     </div>
     <div class="col-md-6">
       <!-- Form Name -->
+
       <legend>User profile</legend>
+      <button type="button" class="btn btn-primary col-md-3 float-right" *ngIf="!edit" (click)="editSwitch()">Edit</button>
+      <button type="button" class="btn btn-primary col-md-3 float-right" *ngIf="edit" (click)="editSwitch()">Save</button>
+      <div class="clearfix"></div>
       <form class="form" *ngIf="ra">
         <fieldset [disabled]="!edit">
           <div class="form-group">
@@ -134,9 +138,6 @@
             </select>
           </div>
         </fieldset>
-
-        <button type="button" class="btn btn-primary col-md-3 " *ngIf="!edit" (click)="editSwitch()">Edit</button>
-        <button type="button" class="btn btn-primary col-md-3" *ngIf="edit" (click)="editSwitch()">Save</button>
       </form>
 
       <!--  Student form   -->
@@ -247,9 +248,7 @@
           </div>
         </fieldset>
 
-        <button type="button" class="btn btn-primary col-md-3 " *ngIf="!edit" (click)="editSwitch()">Edit</button>
-        <button type="button" class="btn btn-primary col-md-3" *ngIf="edit" (click)="editSwitch()">Save</button>
-      </form>
+        </form>
     </div>
 
   </div>

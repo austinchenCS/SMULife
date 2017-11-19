@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DomainModule } from '../domain';
 import { COMPONENTS_ROUTES } from './components-routes';
+import { OrderComponent } from './order/order.component';
 import { EventsComponent } from './events/events.component';
 import { SignupComponent } from './signup/signup.component';
 @NgModule({
@@ -24,6 +25,7 @@ import { SignupComponent } from './signup/signup.component';
         FrontpageComponent,
         ProfileComponent,
         ResidentsPageComponent,
+        OrderComponent,
         EventsComponent,
         SignupComponent
     ],

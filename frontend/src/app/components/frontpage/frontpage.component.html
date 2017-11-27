@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="view">
+    <div class="text-center size-normalizer">
+      <div class="vertical-center">
+        <div class="input-center">
+            <h3>SMU Life</h3>
+            <br>
+
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">ID</span>
+                <input type="text" name="Id"[(ngModel)]="id" class="form-control" placeholder="Id" aria-describedby="sizing-addon1" name="firstname" required>
+            </div>
+            <br/>
+
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Password</span>
+                <input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="password" required minlength=7>
+            </div>
+            <br>
+
+            <button class="btn btn-primary" (click)="login()">Sign In</button>
+            <br>
+            <br>
+
+            <a routerLink="/signup">Don't have an account? Sign up here!</a>
+
+        </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

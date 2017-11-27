@@ -1,0 +1,12 @@
+.vertical-center {
+    width: 35rem;
+    margin: auto; /* Added */
+    padding: 4rem;
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+.view {
+    min-height: 100%;
+    background-color: rgb(237, 237, 230);
+}

@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 container card-group"  *ngFor="let event of events" >
+     <div class="card mb-4">
+        <img alt="Card image cap" class="card-img-top" src=
+        "http://lorempixel.com/318/180/sports/5">
+      <div class="card-block ml-4 mr-4 mt-4">
+        <h4 class="card-title">{{event.eventName}}</h4>
+        <p class="card-text">{{event.description}}</p><a class="card-link" href="#">Läs mer</a>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+<app-footer></app-footer>

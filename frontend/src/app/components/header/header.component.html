@@ -1,12 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand display-4 mb-0" href [routerLink]="'/frontpage'">SMULife</a>
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href [routerLink]="'/frontpage'">
+    <div class="display-4"><span class="font-weight-bold">SMU</span><span>life</span></div>
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href [routerLink]="'/residents'" >Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href [routerLink]="'/residents'" >Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href [routerLink]="'/order'">Orders</a>

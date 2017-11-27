@@ -2,7 +2,6 @@ import { ResidentsPageComponent } from './residents-page/residents-page.componen
 import { ProfileComponent } from './profile/profile.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +20,6 @@ import { SignupComponent } from './signup/signup.component';
     ],
     declarations: [
         HeaderComponent,
-        FooterComponent,
         FrontpageComponent,
         ProfileComponent,
         ResidentsPageComponent,

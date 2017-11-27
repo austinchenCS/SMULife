@@ -12,28 +12,28 @@ export class EventsComponent implements OnInit {
   constructor() { 
    this.events=[
      {
-       eventName: "HomeComing",
-       description: "best day ever!!!"
+       eventName: "Homecoming",
+       description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
      },
      {
-      eventName: "finals",
-      description: "worst day ever!!!"
+      eventName: "Finals",
+      description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
     },
     {
-      eventName: "HomeComing",
-      description: "best day ever!!!"
+      eventName: "Spring Break",
+      description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
     },
     {
-     eventName: "finals",
-     description: "worst day ever!!!"
+     eventName: "Finals Again",
+     description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
    },
    {
-    eventName: "HomeComing",
-    description: "best day ever!!!"
+    eventName: "Commencement",
+    description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
   },
   {
-   eventName: "finals",
-   description: "worst day ever!!!"
+   eventName: "Unpacking",
+   description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
  }
    ]
   }

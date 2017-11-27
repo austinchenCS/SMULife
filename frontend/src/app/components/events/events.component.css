@@ -1,0 +1,18 @@
+.display-4 {
+    font-size:2em;
+}
+.display-3 {
+    font-size:1.5em;
+}
+.lead {
+    font-size: 1em;
+}
+.btn-primary {
+    background-color: #01BAEF;
+}
+.btn-primary:active {
+    background-color: rgb(4, 161, 204)!important;
+}
+.card-link {
+    color:#CC0035;
+}

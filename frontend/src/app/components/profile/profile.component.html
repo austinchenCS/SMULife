@@ -1,260 +1,212 @@
 <app-header></app-header>
-<div class="container mt-4 mb-4">
-    <div class="row">
-      <div class="col-md-4">
-        <img src="http://i0.kym-cdn.com/entries/icons/original/000/005/014/MyLittlePony.jpg" class="img-responsive img-thumbnail ">
-        <div class="form-group">
-          <label class="control-label" for="Upload photo">Upload photo</label>
-          <div>
-            <input id="Upload photo" name="Upload photo" class="input-file" type="file">
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <!-- Form Name -->
-  
-        <legend>User profile</legend>
-        <button type="button" class="btn btn-primary col-md-3 float-right" *ngIf="!edit" (click)="editSwitch()">Edit</button>
-        <button type="button" class="btn btn-primary col-md-3 float-right" *ngIf="edit" (click)="editSwitch()">Save</button>
-        <div class="clearfix"></div>
-        <form class="form" *ngIf="ra">
-          <fieldset [disabled]="!edit">
-            <div class="form-group">
-              <label class="control-label" for="Room Number">Room Number</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-user">
-                    </i>
-                  </div>
-                  <input id="Room Number" name="Room Number" type="text" [(ngModel)]="ra.roomNumber" placeholder="Room Number" class="form-control input-md">
-                </div>
-  
-  
-              </div>
-            </div>
-  
-            <div class="form-group">
-              <label class=" control-label" for="Floor">Floor</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-user">
-                    </i>
-                  </div>
-                  <input id="Floor" name="Floor" type="text" placeholder="Floor" [(ngModel)]="ra.floorNumber" class="form-control input-md">
-                </div>
-  
-  
-              </div>
-            </div>
-  
-  
-  
-            <!-- Text input-->
-            <div class="form-group">
-              <label class=" control-label"  for="Name(full name)">Name(full name)</label>
-              <div class="">
-  
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-birthday-cake"></i>
-  
-                  </div>
-                  <input id="Name(full name)" name="Name(full name)"  [(ngModel)]="ra.name" type="text" placeholder="Name(full name)" class="form-control input-md">
-                </div>
-  
-  
-              </div>
-            </div>
-  
-  
-            <!-- Text input-->
-            <div class="form-group">
-              <label class=" control-label" for="ID Number">ID Number</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-male" style="font-size: 20px;"></i>
-  
-                  </div>
-                  <input id="ID Number" name="ID Number" [(ngModel)]="ra.studentId" type="text" placeholder="ID Number" class="form-control input-md">
-  
-                </div>
-  
-              </div>
-            </div>
-  
-            <!-- Text input-->
-            <div class="form-group">
-              <label class=" control-label" for="Email">Email</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-female" style="font-size: 20px;"></i>
-  
-                  </div>
-                  <input id="Email" name="Email" [(ngModel)]="ra.email" type="text" placeholder="Email" class="form-control input-md">
-  
-                </div>
-              </div>
-            </div>
-            <h6>Emergency Contact</h6>
-            <div class="form-group">
-              <label class=" control-label" for="ECName">Name</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-female" style="font-size: 20px;"></i>
-  
-                  </div>
-                  <input id="ECName" name="ECName" [(ngModel)]="ra.emergencyContactName" type="text" placeholder="Name" class="form-control input-md">
-  
-                </div>
-              </div>
-            </div>
-  
-            <div class="form-group">
-              <label class=" control-label" for="ECPhoneNumber">Phone Number</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-female" style="font-size: 20px;"></i>
-  
-                  </div>
-                  <input id="ECPhoneNumber" name="ECPhoneNumber" [(ngModel)]="ra.emergencyContactNumber" type="text" placeholder="Phone Number" class="form-control input-md">
-  
-                </div>
-              </div>
-            </div>
-  
-            <!-- Multiple Radios (inline) -->
-            <div class="form-group">
-              <label for="relationship">Select Relationship:</label>
-              <select class="form-control" name="emergency relation" [(ngModel)]="ra.emergencyContactRelation" id="relationship">
-                <option>Father</option>
-                <option>Mother</option>
-                <option>Brother</option>
-                <option>Sister</option>
-              </select>
-            </div>
-          </fieldset>
-        </form>
-  
-        <!--  Student form   -->
-        <form class="form" *ngIf="student">
-          <fieldset [disabled]="!edit">
-            <div class="form-group">
-              <label class=" control-label" for="Room Number">Room Number</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-user">
-                    </i>
-                  </div>
-                  <input id="Room Number" name="Room Number" [(ngModel)]="student.roomNumber" type="text" placeholder="Room Number" class="form-control input-md">
-                </div>
-  
-  
-              </div>
-            </div>
-  
-  
-  
-            <!-- Text input-->
-            <div class="form-group">
-              <label class=" control-label" for="Name(full name)">Name(full name)</label>
-              <div class="">
-  
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-birthday-cake"></i>
-  
-                  </div>
-                  <input id="Name(full name)" name="Name(full name)"  [(ngModel)]="student.name" type="text" placeholder="Name(full name)" class="form-control input-md">
-                </div>
-  
-  
-              </div>
-            </div>
-  
-  
-            <!-- Text input-->
-            <div class="form-group">
-              <label class=" control-label" for="ID Number">ID Number</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-male" style="font-size: 20px;"></i>
-  
-                  </div>
-                  <input id="ID Number" name="ID Number" type="text" [(ngModel)]="student.studentId" placeholder="ID Number" class="form-control input-md">
-  
-                </div>
-  
-              </div>
-            </div>
-  
-            <!-- Text input-->
-            <div class="form-group">
-              <label class=" control-label" for="Email">Email</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-female" style="font-size: 20px;"></i>
-  
-                  </div>
-                  <input id="Email" name="Email" type="text" placeholder="Email" [(ngModel)]="student.email" class="form-control input-md">
-  
-                </div>
-              </div>
-            </div>
-            <h6>Emergency Contact</h6>
-            <div class="form-group">
-              <label class=" control-label" for="ECName">Name</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-female" style="font-size: 20px;"></i>
-  
-                  </div>
-                  <input id="ECName" name="ECName" type="text" placeholder="Name" [(ngModel)]="student.emergencyContactName" class="form-control input-md">
-  
-                </div>
-              </div>
-            </div>
-  
-            <div class="form-group">
-              <label class=" control-label" for="ECPhoneNumber">Phone Number</label>
-              <div class="">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-female" style="font-size: 20px;"></i>
-  
-                  </div>
-                  <input id="ECPhoneNumber" name="ECPhoneNumber" type="text" [(ngModel)]="student.emergencyContactNumber" placeholder="Phone Number" class="form-control input-md">
-  
-                </div>
-              </div>
-            </div>
-  
-            <div class="form-group">
-              <label for="relationship">Select Relationship:</label>
-              <select class="form-control" id="relationship" name="ecrelation"[(ngModel)]="student.emergencyContactRelation">
-                <option>Father</option>
-                <option>Mother</option>
-                <option>Brother</option>
-                <option>Sister</option>
-              </select>
-            </div>
-          </fieldset>
-  
-          </form>
-      </div>
-  
+<div class="container jumbotron bg-white mb-0">
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="display-4" id="upload">Upload Profile Photo</h3>
+      <img src="http://www.smu.edu/-/media/Site/AboutSMU/Facts/CampusProfile.ashx?la=en&hash=D3897BD94ACAE5A2817D3F7574DF00F6180A456C" class="img-responsive img-thumbnail mt-4">
+      <label class="custom-file mt-2">
+        <input type="file" id="file2" class="custom-file-input">
+        <span class="custom-file-control"></span>
+      </label>
     </div>
+    <div class="col-md-8">
+    <!-- Form Name -->
+      <div class="clearfix"></div>
+      <div class="row align-items-center">
+        <div class="col-8">
+          <legend><h3 class="display-4">User Profile</h3></legend>
+        </div>
+        <div class="col-4">
+          <button type="button" class="btn btn-primary border-0 float-right" *ngIf="!edit" (click)="editSwitch()">Edit</button>
+          <button type="button" class="btn btn-success border-0 float-right" *ngIf="edit" (click)="editSwitch()">Save</button>
+        </div>
+      </div> 
+      <form class="form" *ngIf="ra">
+        <fieldset [disabled]="!edit">
+          <div class="form-group">
+            <label class="control-label lead" for="Room Number">Room Number</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-user">
+                  </i>
+                </div>
+                <input id="Room Number" name="Room Number" type="text" [(ngModel)]="ra.roomNumber" placeholder="Room Number" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label lead" for="Floor">Floor</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-user">
+                  </i>
+                </div>
+                <input id="Floor" name="Floor" type="text" placeholder="Floor" [(ngModel)]="ra.floorNumber" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="control-label lead"  for="Name(full name)">Name (Full Name)</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-birthday-cake">
+                  </i>
+                </div>
+                <input id="Name(full name)" name="Name(full name)"  [(ngModel)]="ra.name" type="text" placeholder="Name(full name)" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="control-label lead" for="ID Number">ID Number</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-male" style="font-size: 20px;"></i>  
+                </div>
+                <input id="ID Number" name="ID Number" [(ngModel)]="ra.studentId" type="text" placeholder="ID Number" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="control-label lead" for="Email">Email</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-female" style="font-size: 20px;"></i>
+                </div>
+                <input id="Email" name="Email" [(ngModel)]="ra.email" type="text" placeholder="Email" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <h6>Emergency Contact</h6>
+          <div class="form-group">
+            <label class="control-label lead" for="ECName">Name</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-female" style="font-size: 20px;"></i>  
+                </div>
+                <input id="ECName" name="ECName" [(ngModel)]="ra.emergencyContactName" type="text" placeholder="Name" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label lead" for="ECPhoneNumber">Phone Number</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-female" style="font-size: 20px;"></i>
+                </div>
+                <input id="ECPhoneNumber" name="ECPhoneNumber" [(ngModel)]="ra.emergencyContactNumber" type="text" placeholder="Phone Number" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <!-- Multiple Radios (inline) -->
+          <div class="form-group">
+            <label class="lead" for="relationship">Select Relationship:</label>
+            <select class="form-control" name="emergency relation" [(ngModel)]="ra.emergencyContactRelation" id="relationship">
+              <option>Father</option>
+              <option>Mother</option>
+              <option>Brother</option>
+              <option>Sister</option>
+            </select>
+          </div>
+        </fieldset>
+      </form>
   
+      <!--  Student form   -->
+      <form class="form" *ngIf="student">
+        <fieldset [disabled]="!edit">
+          <div class="form-group">
+            <label class="control-label lead" for="Room Number">Room Number</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-user">
+                  </i>
+                </div>
+                <input id="Room Number" name="Room Number" [(ngModel)]="student.roomNumber" type="text" placeholder="Room Number" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="control-label lead" for="Name(full name)">Name(full name)</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-birthday-cake"></i>
+                </div>
+                <input id="Name(full name)" name="Name(full name)"  [(ngModel)]="student.name" type="text" placeholder="Name(full name)" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="control-label lead" for="ID Number">ID Number</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-male" style="font-size: 20px;"></i>
+                </div>
+                <input id="ID Number" name="ID Number" type="text" [(ngModel)]="student.studentId" placeholder="ID Number" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="control-label lead" for="Email">Email</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-female" style="font-size: 20px;"></i>
+                </div>
+                <input id="Email" name="Email" type="text" placeholder="Email" [(ngModel)]="student.email" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <h6>Emergency Contact</h6>
+          <div class="form-group">
+            <label class="control-label lead" for="ECName">Name</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-female" style="font-size: 20px;"></i>
+                </div>
+                <input id="ECName" name="ECName" type="text" placeholder="Name" [(ngModel)]="student.emergencyContactName" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label lead" for="ECPhoneNumber">Phone Number</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-female" style="font-size: 20px;"></i>  
+                </div>
+                <input id="ECPhoneNumber" name="ECPhoneNumber" type="text" [(ngModel)]="student.emergencyContactNumber" placeholder="Phone Number" class="form-control input-md">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="leads" for="relationship">Select Relationship:</label>
+            <select class="form-control" id="relationship" name="ecrelation"[(ngModel)]="student.emergencyContactRelation">
+              <option>Father</option>
+              <option>Mother</option>
+              <option>Brother</option>
+              <option>Sister</option>
+            </select>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
   <div>{{ra | json}}</div>
   <div>{{student | json}}</div>
-  </div>
-<app-footer></app-footer>
+</div>

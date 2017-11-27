@@ -1,3 +1,4 @@
+import { UserAuthenticationService } from './../../user-authentication.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Student, Ra, WorkOrder } from '../../domain';
@@ -10,7 +11,7 @@ import { Student, Ra, WorkOrder } from '../../domain';
 export class OrderComponent implements OnInit {
   private newWorkOrder = new WorkOrder();
   private workOrders : WorkOrder[];
-  constructor() {
+  constructor( private auth: UserAuthenticationService ) {
    }
 
   ngOnInit() {

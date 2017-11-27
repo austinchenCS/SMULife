@@ -1,6 +1,6 @@
 import { UserAuthenticationService } from './../../user-authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,9 +20,20 @@ export class FrontpageComponent implements OnInit {
   ngOnInit() {
   }
 private login(){
-  if(this.id=="87654321" && this.password=="pass" ){
-    this.auth.setLoggedIn();
-    this.router.navigateByUrl('profile')
-  }
+  let params = new HttpParams();
+  params.set("id", this.id);
+  params.set("pass", this.password);
+  console.log(params.keys())
+  
+  this.http.get(`http://13.58.69.120/login?id=${this.id}&pass=${this.password}`).subscribe(data=> this.authenticate(data))
+}
+private authenticate(data){
+if(data[0]['type']!="failure"){
+  this.auth.setLoggedIn();
+  this.router.navigateByUrl('profile')
+}
+else(
+  alert("not valid login")
+)
 }
 }

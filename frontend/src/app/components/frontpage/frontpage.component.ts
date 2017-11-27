@@ -1,6 +1,7 @@
 import { UserAuthenticationService } from './../../user-authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-frontpage',
@@ -12,7 +13,7 @@ export class FrontpageComponent implements OnInit {
   private password: string;
   
   
-  constructor( private http: HttpClient, private auth: UserAuthenticationService ) { 
+  constructor( private http: HttpClient, private auth: UserAuthenticationService, private router: Router) { 
  
   }
 
@@ -21,6 +22,7 @@ export class FrontpageComponent implements OnInit {
 private login(){
   if(this.id=="87654321" && this.password=="pass" ){
     this.auth.setLoggedIn();
+    this.router.navigateByUrl('profile')
   }
 }
 }

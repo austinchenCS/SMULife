@@ -1,3 +1,4 @@
+import { UserAuthenticationService } from './../../user-authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,16 +8,19 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
-/*
-  constructor( private http: HttpClient ) { 
-    this.http.get('http://13.58.69.120/RAfeedback?ra_id=12345678').subscribe(data => {
-      // Read the result field from the JSON response.
-      var random = data;
-      console.log(random);
-    });
-  }
-*/
-  ngOnInit() {
+  private id: string;
+  private password: string;
+  
+  
+  constructor( private http: HttpClient, private auth: UserAuthenticationService ) { 
+ 
   }
 
+  ngOnInit() {
+  }
+private login(){
+  if(this.id=="87654321" && this.password=="pass" ){
+    this.auth.setLoggedIn();
+  }
+}
 }

@@ -7,18 +7,18 @@
             <br>
 
             <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon1">Email</span>
-                <input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" name="firstname" required>
+                <span class="input-group-addon" id="sizing-addon1">ID</span>
+                <input type="text" name="Id"[(ngModel)]="id" class="form-control" placeholder="Id" aria-describedby="sizing-addon1" name="firstname" required>
             </div>
             <br/>
 
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Password</span>
-                <input type="password" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="password" required minlength=7>
+                <input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="password" required minlength=7>
             </div>
             <br>
 
-            <a href="#" class="btn btn-primary">Sign In</a>
+            <button class="btn btn-primary" (click)="login()">Sign In</button>
             <br>
             <br>
 

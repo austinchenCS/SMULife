@@ -1,3 +1,4 @@
+import { UserAuthenticationService } from './../../user-authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../domain';
 
@@ -9,7 +10,7 @@ import { Event } from '../../domain';
 })
 export class EventsComponent implements OnInit {
   private events: Event[]
-  constructor() { 
+  constructor( private auth: UserAuthenticationService) { 
    this.events=[
      {
        eventName: "Homecoming",

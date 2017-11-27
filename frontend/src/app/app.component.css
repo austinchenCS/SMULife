@@ -2,7 +2,3 @@ html {
     min-height: 100%;
     margin:0;
 }
-.view {
-    background-color: #FBFBFF;
-    min-height: calc(100vh - 60px);  
-}

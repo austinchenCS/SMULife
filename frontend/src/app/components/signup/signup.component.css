@@ -3,9 +3,27 @@
     margin: auto; /* Added */
     padding: 4rem;
     float: none; /* Added */
-    margin-bottom: 10px; /* Added */
 }
-
-.view {
-    background-color: rgb(237, 237, 230);
+.display-4{
+    font-size:1.5em;
+}
+.jumbotron {
+    background-color: #FFF;
+}
+.navbar {
+    background-color:#01BAEF;
+    font-size: .9em;
+}
+.btn-primary {
+    background-color: #01BAEF;
+}
+.btn-primary:active {
+    background-color: rgb(4, 161, 204)!important;
+}
+.input-group-addon {
+    background-color:#FBFBFF;
+    font-size: .9em;
+}
+input.form-control, p.lead {
+    font-size: .9em;
 }

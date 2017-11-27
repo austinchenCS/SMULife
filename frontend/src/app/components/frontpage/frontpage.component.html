@@ -1,31 +1,27 @@
-<app-header></app-header>
-<div class="view">
-    <div class="text-center size-normalizer">
-      <div class="vertical-center">
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href [routerLink]="'/frontpage'">
+        <div class="display-4"><span class="font-weight-bold">SMU</span><span>life</span></div>
+    </a>
+</nav>      
+<div class="jumbotron vertical-center mt-4 p-5">
+    <div class="container text-center">
+        <img src="../../../assets/smu.png" height="50" alt="">
+        <div class="display-2"><span class="font-weight-bold" style="color:#01BAEF;">SMU</span><span style="color:#CC0035;">life</span></div>
+        <hr class="my-4">
         <div class="input-center">
-            <h3>SMU Life</h3>
-            <br>
-
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">ID</span>
                 <input type="text" name="Id"[(ngModel)]="id" class="form-control" placeholder="Id" aria-describedby="sizing-addon1" name="firstname" required>
             </div>
-            <br/>
-
+            <br>
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Password</span>
                 <input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="password" required minlength=7>
             </div>
             <br>
-
-            <button class="btn btn-primary" (click)="login()">Sign In</button>
-            <br>
-            <br>
-
-            <a routerLink="/signup">Don't have an account? Sign up here!</a>
-
         </div>
+        <a href="#" class="btn btn-primary border-0">Sign In</a>
+        <hr class="my-4">
+        <a routerLink="/signup"><p class="lead m-0">Don't have an account? Sign up here!</p></a>
     </div>
-  </div>
 </div>
-<app-footer></app-footer>

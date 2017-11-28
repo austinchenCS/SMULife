@@ -1,0 +1,12 @@
+.btn-primary {
+    background-color: #01BAEF;
+}
+.btn-primary:active {
+    background-color: rgb(4, 161, 204)!important;
+}
+.lead {
+    font-size: 1em;
+}
+.display-4 {
+    font-size:2em;
+}

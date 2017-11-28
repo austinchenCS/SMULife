@@ -8,6 +8,7 @@
         <img src="../../../assets/smu.png" height="50" alt="">
         <div class="display-2"><span class="font-weight-bold" style="color:#01BAEF;">SMU</span><span style="color:#CC0035;">life</span></div>
         <hr class="my-4">
+        <form name="loginForm" #loginForm="ngForm">
         <div class="input-center">
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">SMU ID</span>
@@ -32,7 +33,8 @@
             </div>
             <br>
         </div>
-        <button class="btn btn-primary border-0" (click)="login()">Sign In</button>
+        <button class="btn btn-primary border-0" (click)="login()" [disabled]="!loginForm.valid">Sign In</button>
+        </form>
         <hr class="my-4">
         <a routerLink="/signup"><p class="lead m-0">Don't have an account? Sign up here!</p></a>
     </div>

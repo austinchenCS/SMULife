@@ -10,6 +10,7 @@
             <h3>Sign-Up</h3>
             <hr class="my-4">   
 
+
             <form name="loginForm" #loginForm="ngForm">  
 
             <div class="input-group">
@@ -144,11 +145,11 @@
             <select id="dormID"
                 class="form-control"
                 name="dormID"
-                [(ngModel)]="dorms"
+                [(ngModel)]="dorm"
                 #dormId="ngModel">
                 <option selected>Select your Residential Commons</option>
                 <option *ngFor="let dorm of dorms"
-                    [value]="dorm.id">
+                    [value]="dorm.name">
                     {{ dorm.name }}
                 </option>
             </select>
@@ -174,17 +175,18 @@
             <br>
 
             <div class="form-group">
-                <label for="isStudent">
-                    <input type="radio"
-                         id="isStudent"
-                         name="isStudent"
-                          /> Student
-
-                    <input type="radio"
-                         id="isRA"
-                         name="isRA"
-                         /> RA
-                </label>
+                <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" [(ngModel)]="isRA" name="optionsRadios" id="optionsRadios1" value="Student" checked>
+                    Student
+                    </label>
+                  </div>
+                  <div class="form-check">
+                  <label class="form-check-label">
+                      <input type="radio" class="form-check-input"  [(ngModel)]="isRA" name="optionsRadios" id="optionsRadios2" value="RA">
+                     RA
+                    </label>
+                  </div>
             </div>
             
             <br>
@@ -242,7 +244,7 @@
 
             <br>
 
-            <button class="btn btn-primary border-0" [disabled]="!loginForm.valid">Sign Up</button>
+            <button class="btn btn-primary border-0" [disabled]="!loginForm.valid" (click)="signUp()">Sign Up</button>
             </form>
 
             <br> 

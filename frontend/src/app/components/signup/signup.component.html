@@ -136,12 +136,15 @@
 
             <br>
 
+            <h5>Residential Commons</h5>
+            <br>
+
             <select id="dormID"
                 class="form-control"
                 name="dormID"
                 [(ngModel)]="dorms"
                 #dormId="ngModel">
-                <option>Select your Residential Commons</option>
+                <option selected>Select your Residential Commons</option>
                 <option *ngFor="let dorm of dorms"
                     [value]="dorm.id">
                     {{ dorm.name }}
@@ -151,8 +154,18 @@
 
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Room Number</span>
-                <input type="text" #roomNumberName="ngModel" [(ngModel)]="roomnumber" class="form-control" placeholder="251" aria-describedby="sizing-addon1" name="roomnumber-field" required>
+                <input type="text" #roomNumberName="ngModel" [(ngModel)]="roomnumber" class="form-control" placeholder="251" aria-describedby="sizing-addon1" name="roomnumber-field" required maxlength=3>
             </div>
+
+            <div class="alert alert-danger"
+            *ngIf="roomNumberName.errors && roomNumberName.touched">
+                <ul>
+                    <li [hidden]="!roomNumberName.errors.required">
+                        Room number required!
+                    </li>    
+                </ul>
+            </div>
+
             <br>
             
             <h5>I am a...</h5>

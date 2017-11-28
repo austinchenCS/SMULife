@@ -10,6 +10,7 @@
             <h3>Sign-Up</h3>
             <hr class="my-4">   
 
+
             <form name="loginForm" #loginForm="ngForm">  
 
             <div class="input-group">
@@ -120,8 +121,8 @@
 
             <br>
             <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon1">Password</span>
-                <input type="password" #passwordConfirmName="ngModel" [(ngModel)]="passwordconfirm" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="passwordconfirm-field" required minlength=7>
+                <span class="input-group-addon" id="sizing-addon1">Confirm Password</span>
+                <input type="password" #passwordConfirmName="ngModel" [(ngModel)]="passwordconfirm" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="passwordconfirm-field" required minlength=7 [pattern]="password">
             </div>
 
             <div class="alert alert-danger"
@@ -144,11 +145,11 @@
             <select id="dormID"
                 class="form-control"
                 name="dormID"
-                [(ngModel)]="dorms"
+                [(ngModel)]="dorm"
                 #dormId="ngModel">
                 <option selected>Select your Residential Commons</option>
                 <option *ngFor="let dorm of dorms"
-                    [value]="dorm.id">
+                    [value]="dorm.name">
                     {{ dorm.name }}
                 </option>
             </select>
@@ -156,7 +157,7 @@
 
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Room Number</span>
-                <input type="text" #roomNumberName="ngModel" [(ngModel)]="roomnumber" class="form-control" placeholder="251" aria-describedby="sizing-addon1" name="roomnumber-field" required maxlength=3>
+                <input type="text" #roomNumberName="ngModel" [(ngModel)]="roomnumber" class="form-control" placeholder="251" aria-describedby="sizing-addon1" name="roomnumber-field" required maxlength=3 pattern="[\d]{3}">
             </div>
 
             <div class="alert alert-danger"
@@ -164,7 +165,11 @@
                 <ul>
                     <li [hidden]="!roomNumberName.errors.required">
                         Room number required!
-                    </li>    
+                    </li>  
+                    
+                    <li [hidden]="!roomNumberName.errors.pattern">
+                        Room number invalid!
+                    </li> 
                 </ul>
             </div>
 
@@ -174,19 +179,37 @@
             <br>
 
             <div class="form-group">
-                <label for="isStudent">
-                    <input type="radio"
-                         id="isStudent"
-                         name="isStudent"
-                          /> Student
-
-                    <input type="radio"
-                         id="isRA"
-                         name="isRA"
-                         /> RA
-                </label>
+                <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" [(ngModel)]="isRA" name="optionsRadios" id="optionsRadios1" value="Student" checked>
+                    Student
+                    </label>
+                  </div>
+                  <div class="form-check">
+                  <label class="form-check-label">
+                      <input type="radio" class="form-check-input"  [(ngModel)]="isRA" name="optionsRadios" id="optionsRadios2" value="RA">
+                     RA
+                    </label>
+                  </div>
             </div>
-            
+            <div *ngIf="isRA=='RA'">
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">RA Passphrase</span>
+                <input type="password" #raPassPhrase="ngModel" [(ngModel)]="enteredPhrase" class="form-control" placeholder="RA Passphrase" aria-describedby="sizing-addon1"  name="rapass-field" required minlength=7 [pattern]="raPass">
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="raPassPhrase.errors && raPassPhrase.touched">
+                    <ul>
+                    <li [hidden]="!raPassPhrase.errors.required">
+                        Passphrase is required
+                    </li>
+                    <li [hidden]="!raPassPhrase.errors.pattern">
+                        Passphrase is incorrect!
+                    </li>
+                </ul>
+            </div>
+            </div>
             <br>
             <h4>Emergency Contact Information:</h4>
             <br>
@@ -242,7 +265,7 @@
 
             <br>
 
-            <button class="btn btn-primary border-0" [disabled]="!loginForm.valid">Sign Up</button>
+            <button class="btn btn-primary border-0" [disabled]="!loginForm.valid" (click)="signUp()">Sign Up</button>
             </form>
 
             <br> 

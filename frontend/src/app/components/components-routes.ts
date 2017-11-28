@@ -9,10 +9,10 @@ import { Routes } from "@angular/router";
 import { FeedbackComponent } from './feedback/feedback.component'
 
 export const COMPONENTS_ROUTES : Routes = [
-    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-    { path: 'residents', component: ResidentsPageComponent, canActivate: [AuthGuard] },
-    { path: 'order', component: OrderComponent , canActivate: [AuthGuard]},
-    { path: 'events', component: EventsComponent , canActivate: [AuthGuard]},
+    { path: ':type/:id/profile', component: ProfileComponent, canActivate: [AuthGuard] },
+    { path: 'ra/:id/residents', component: ResidentsPageComponent, canActivate: [AuthGuard] },
+    { path: ':type/:id/order', component: OrderComponent , canActivate: [AuthGuard]},
+    { path: ':type/:id/events', component: EventsComponent , canActivate: [AuthGuard]},
     { path: 'login', component: FrontpageComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'feedback', component: FeedbackComponent }

@@ -1,19 +1,45 @@
-.display-4 {
-    font-size:2em; 
+.vertical-center {
+    width: 35rem;
+    margin: auto; /* Added */
+    padding: 4rem;
+    float: none; /* Added */
+}
+.display-4{
+    font-size:1.5em;
+}
+.jumbotron {
+    background-color: #FFF;
+}
+.navbar {
+    background-color:#01BAEF;
+    font-size: .9em;
 }
 .btn-primary {
-    background-color:#01BAEF;
+    background-color: #01BAEF;
 }
-.img-thumbnail {
-    opacity:0.2;
+.btn-primary:active {
+    background-color: rgb(4, 161, 204)!important;
 }
 .input-group-addon {
     background-color:#FBFBFF;
     font-size: .9em;
 }
-input.form-control {
+input.form-control, p.lead {
     font-size: .9em;
 }
-.lead {
-    font-size: 1em;
+
+.form-control.ng-invalid.ng-touched {
+    border: solid 1px red;
+    background: pink;
+}
+
+.alert {
+    margin-top: .75rem;
+    margin-bottom: -.65rem;
+}
+
+.alert ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
 }

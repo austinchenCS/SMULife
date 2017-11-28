@@ -2,16 +2,34 @@
 <div class="container jumbotron bg-white mb-0">
   <h3 class="display-4">Events</h3>
   <div class="row">
-    <div class="col-md-4 container card-group"  *ngFor="let event of events" >
-     <div class="card mt-2 mb-4">
+    <div class="col-md-4 container card-group"  *ngFor="let event of events; let i = index;" >
+      <div class="card mt-2 mb-4">
         <img alt="Card image cap" class="card-img-top" src=
-        "https://admission.smu.edu/www/images/Daily%20Visit/20258D_0003_RT_HR.JPG">
-      <div class="card-block m-4">
-        <h4 class="card-title display-3">{{event.eventName}}</h4>
-        <p class="card-text lead">{{event.description}}</p>
-        <a class="card-link lead" href="#">Read More</a>
-      </div>
+          "https://admission.smu.edu/www/images/Daily%20Visit/20258D_0003_RT_HR.JPG">
+        <div class="card-block m-4">
+          <h4 class="card-title display-3">{{event.eventName}}</h4>
+          <p class="card-text lead">{{event.description}}</p>
+          <a class="card-link lead" href (click)="selectedEvent = event" data-toggle="modal" data-target="#eventModal">Read More</a>        
+        </div>
       </div>
     </div>
+    <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="eventModalLabel">{{selectedEvent?.eventName}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                {{selectedEvent?.description}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary border-0" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </div>

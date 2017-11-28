@@ -188,14 +188,14 @@
                     </label>
                   </div>
             </div>
-            
-            <div class="input-group" *ngIf="isRA=='RA'">
+            <div *ngIf="isRA=='RA'">
+            <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">RA Passphrase</span>
                 <input type="password" #raPassPhrase="ngModel" [(ngModel)]="enteredPhrase" class="form-control" placeholder="RA Passphrase" aria-describedby="sizing-addon1"  name="rapass-field" required minlength=7 [pattern]="raPass">
             </div>
 
             <div class="alert alert-danger"
-            *ngIf="isRA=='RA' && raPassPhrase.errors && raPassPhrase.touched">
+            *ngIf="raPassPhrase.errors && raPassPhrase.touched">
                     <ul>
                     <li [hidden]="!raPassPhrase.errors.required">
                         Passphrase is required
@@ -204,6 +204,7 @@
                         Passphrase is incorrect!
                     </li>
                 </ul>
+            </div>
             </div>
             <br>
             <h4>Emergency Contact Information:</h4>

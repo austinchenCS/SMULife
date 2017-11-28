@@ -11,6 +11,7 @@ import { COMPONENTS_ROUTES } from './components-routes';
 import { OrderComponent } from './order/order.component';
 import { EventsComponent } from './events/events.component';
 import { SignupComponent } from './signup/signup.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -25,7 +26,8 @@ import { SignupComponent } from './signup/signup.component';
         ResidentsPageComponent,
         OrderComponent,
         EventsComponent,
-        SignupComponent
+        SignupComponent,
+        FeedbackComponent
     ],
     exports: [
     ]

@@ -17,7 +17,7 @@ export class EventsComponent implements OnInit {
   constructor(private http:HttpClient, private auth: UserAuthenticationService, private activRoute: ActivatedRoute) { 
    this.events=[
      {
-       eventName: "Homecoming",
+       eventName: "Home Coming",
        description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
      },
      {

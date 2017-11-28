@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
 import { SignupComponent } from './signup/signup.component';
 import { Routes } from "@angular/router";
+import { FeedbackComponent } from './feedback/feedback.component'
 
 export const COMPONENTS_ROUTES : Routes = [
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
@@ -13,5 +14,6 @@ export const COMPONENTS_ROUTES : Routes = [
     { path: 'order', component: OrderComponent , canActivate: [AuthGuard]},
     { path: 'events', component: EventsComponent , canActivate: [AuthGuard]},
     { path: 'login', component: FrontpageComponent },
-    { path: 'signup', component: SignupComponent }
+    { path: 'signup', component: SignupComponent },
+    { path: 'feedback', component: FeedbackComponent }
 ];

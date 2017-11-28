@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
   private id;
   private type;
-  private student: Student;
+  private student: Student ={};
   private file: File;
   private edit= false;
   private src:string="";

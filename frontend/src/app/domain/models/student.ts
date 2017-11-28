@@ -1,7 +1,8 @@
 import { Event } from './event';
 import { Ra } from './ra';
 export class Student {
-    name?: string;
+    firstName?: string;
+    lastName?: string;
     phoneNum?: number;
     studentId?: number;
     roomNumber?: number;

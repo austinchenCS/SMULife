@@ -1,5 +1,6 @@
 export class Ra {
-    name?: string;
+    firstName?: string;
+    lastName?: string;
     floorNumber?: number;
     onCall?: boolean;
     roomNumber?: number;

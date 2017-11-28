@@ -11,15 +11,15 @@ export class SignupComponent implements OnInit {
   private email: string="";
   private firstname: string="";
   private lastname: string="";
-  private phoneNumber: string="";
+  private phonenumber: string="";
   private password: string="";
-  private confirmPassword: string="";
-  private residentialCommons: string="";
-  private roomNumber: string="";
+  private passwordconfirm: string="";
+  private domrs: string="";
+  private roomnumber: string="";
   private isRA: string="";
-  private emergencyContactName: string="";
-  private emergencyContactNumber: string="";
-  private emergencyContactRelation: string="";
+  private contactname: string="";
+  private contactnum: string="";
+  private relation: string="";
 
   constructor() { }
 

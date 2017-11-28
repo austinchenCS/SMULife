@@ -1,6 +1,7 @@
 import { UserAuthenticationService } from './../../user-authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../domain';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Event } from '../../domain';
 })
 export class EventsComponent implements OnInit {
   private events: Event[]
-  constructor( private auth: UserAuthenticationService) { 
+  constructor(private http:HttpClient, private auth: UserAuthenticationService) { 
    this.events=[
      {
        eventName: "Homecoming",
@@ -40,6 +41,17 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.http.get('http://13.58.69.120/get_calendar').subscribe(data => this.onEventLoad(data) )
+  }
+
+  private onEventLoad(events){
+    for(let event of events){
+      var temp: Event={
+        description: event['description'],
+        eventName: event['eventname']
+      }
+      this.events.push(temp)
+    }
   }
 
 }

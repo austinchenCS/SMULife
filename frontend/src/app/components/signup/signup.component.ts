@@ -65,9 +65,9 @@ private signUp(){
   
 }
 private isSuccess(status){
-  console.log(status);
+  console.log(status[0]['success']);
   
-  if(status[0]['success']=="true"){
+  if(status[0]['success']==true){
     alert("successful signup")
   }
   else{

@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit {
   private confirmPassword: string="";
   private residentialCommons: string="";
   private roomNumber: string="";
+  private isRA: string="";
   private emergencyContactName: string="";
   private emergencyContactNumber: string="";
   private emergencyContactRelation: string="";

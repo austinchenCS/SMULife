@@ -19,10 +19,10 @@ export class FrontpageComponent implements OnInit {
 
   ngOnInit() {
   }
-private login(){
-  if(this.id=="87654321" && this.password=="pass" ){
-    this.auth.setLoggedIn();
-    this.router.navigateByUrl('profile')
-  }
+  private login(){
+    if(this.id=="87654321" && this.password=="pass" ){
+      this.auth.setLoggedIn();
+      this.router.navigateByUrl('profile')
+    }
 }
 }

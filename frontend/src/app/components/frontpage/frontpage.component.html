@@ -10,13 +10,25 @@
         <hr class="my-4">
         <div class="input-center">
             <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon1">ID</span>
-                <input type="text" name="Id"[(ngModel)]="id" class="form-control" placeholder="Id" aria-describedby="sizing-addon1" name="firstname" required>
+                <span class="input-group-addon" id="sizing-addon1">SMU ID</span>
+                <input type="text" name="SMU ID"[(ngModel)]="id" #idName="ngModel" class="form-control" placeholder="Ex. 467938102" aria-describedby="sizing-addon1" required minlength=8 maxlength=8 pattern="[\d+]{8}">
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="idName.errors && idName.touched">
+                    <ul>
+                    <li [hidden]="!idName.errors.required">
+                        SMU ID is required
+                    </li>
+                    <li [hidden]="!idName.errors.pattern">
+                        SMU ID is not valid
+                    </li>
+                </ul>
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Password</span>
-                <input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="password" required minlength=7>
+                <input [(ngModel)]="password" type="password" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="password">
             </div>
             <br>
         </div>

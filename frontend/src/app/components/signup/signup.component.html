@@ -3,37 +3,47 @@
         <div class="display-4"><span class="font-weight-bold">SMU</span><span>life</span></div>
     </a>
 </nav>  
+
 <div class="jumbotron vertical-center mt-4 p-5">
     <div class="container text-center">
         <div class="input-center">
             <h3>Sign-Up</h3>
             <hr class="my-4">
-            <div class="card-block">
-                <div class="input-group">
+
+            <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Email</span>
-                <input type="text" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$">
+                <input type="text" name="Email" #emailName="ngModel" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" required pattern="[a-z0-9]+[_a-z0-9\.-]*[a-z0-9]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})">
             </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emailName.errors && emailName.touched">
+                    <ul>
+                    <li [hidden]="!emailName.errors.required">
+                        Email is required
+                    </li>
+                    <li [hidden]="!emailName.errors.pattern">
+                        EMail is not valid
+                    </li>
+                </ul>
+            </div>
+
             <br>
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">First name</span>
                 <input type="text" class="form-control" placeholder="First name" aria-describedby="sizing-addon1" name="firstname" required>
             </div>
-            <br/>
+            <br>
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Last name</span>
                 <input type="text" class="form-control" placeholder="Last name" aria-describedby="sizing-addon1" name="firstname" required>
             </div>
-            <br/>
+            <br>
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Phone Number</span>
                 <input type="text" class="form-control" placeholder="Ex. 555-555-555" aria-describedby="sizing-addon1" name="firstname" required>
             </div>
-            <br/>
-            <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon1">Room Number</span>
-                <input type="text" class="form-control" placeholder="251" aria-describedby="sizing-addon1" name="firstname" required>
-            </div>
-            <br/>
+            <br>
+
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Password</span>
                 <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1"  name="password" required minlength=7>
@@ -44,24 +54,63 @@
                 <input type="password" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="password" required minlength=7>
             </div>
             <br>
+
+            <select id="dormID"
+                class="form-control"
+                name="dormID"
+                [(ngModel)]="dorms"
+                #dormId="ngModel">
+                <option>Select your Residential Commons</option>
+                <option *ngFor="let dorm of dorms"
+                    [value]="dorm.id">
+                    {{ dorm.name }}
+                </option>
+            </select>
+            <br>
+
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Room Number</span>
+                <input type="text" class="form-control" placeholder="251" aria-describedby="sizing-addon1" name="firstname" required>
+            </div>
+            <br>
+            
+            <h5>I am a...</h5>
+            <br>
+
+            <div class="form-group">
+                <label for="isStudent">
+                    <input type="radio"
+                         id="isStudent"
+                         name="isStudent"
+                          /> Student
+
+                    <input type="radio"
+                         id="isRA"
+                         name="isRA"
+                         /> RA
+                </label>
+            </div>
+            
+            
             <br>
             <h4>Emergency Contact Information:</h4>
             <br>
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Full Name</span>
-                <input type="text" class="form-control" placeholder="Johnathan Tiberius Appleseed" aria-describedby="sizing-addon1" name="firstname" required>
+                <input type="text" class="form-control" placeholder="Ex. Johnathan Tiberius Appleseed" aria-describedby="sizing-addon1" name="firstname" required>
             </div>
-            <br/>
+            <br>
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Number</span>
                 <input type="text" class="form-control" placeholder="Ex. 555-555-555" aria-describedby="sizing-addon1" name="firstname" required>
             </div>
-            <br/>  
+            <br>  
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Relation</span>
                 <input type="text" class="form-control" placeholder="Ex. Father" aria-describedby="sizing-addon1" name="firstname" required>
             </div>
-            <br/>
+            <br>
+
             <a href="#" class="btn btn-primary border-0">Sign Up</a>
             <br> 
         </div>

@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
+ private enteredPhrase: string="";
+  private raPass: string = "residents are life"
   private id: string="";
   private email: string="";
   private firstname: string="";

@@ -121,8 +121,8 @@
 
             <br>
             <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon1">Password</span>
-                <input type="password" #passwordConfirmName="ngModel" [(ngModel)]="passwordconfirm" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="passwordconfirm-field" required minlength=7>
+                <span class="input-group-addon" id="sizing-addon1">Confirm Password</span>
+                <input type="password" #passwordConfirmName="ngModel" [(ngModel)]="passwordconfirm" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="passwordconfirm-field" required minlength=7 [pattern]="password">
             </div>
 
             <div class="alert alert-danger"

@@ -28,9 +28,12 @@ private login(){
   this.http.get(`http://13.58.69.120/login?id=${this.id}&pass=${this.password}`).subscribe(data=> this.authenticate(data))
 }
 private authenticate(data){
-if(data[0]['type']!="failure"){
+  var type=data[1]['type'];
+
+  console.log(type)
+if(type && type!="failure"){
   this.auth.setLoggedIn();
-  this.router.navigateByUrl('profile')
+  this.router.navigateByUrl('/'+type+'/'+this.id+'/profile')
 }
 else(
   alert("not valid login")

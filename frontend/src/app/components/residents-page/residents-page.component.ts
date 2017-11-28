@@ -2,6 +2,7 @@ import { UserAuthenticationService } from './../../user-authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { Student, Ra } from '../../domain';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-residents-page',
@@ -10,11 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ResidentsPageComponent implements OnInit {
   private ra : Ra;
-  private id;
+  private id: string;
   private type;
   private residents : Student[];
   private testStudent : Student;
-  constructor(private auth: UserAuthenticationService , private activRoute: ActivatedRoute) { }
+  constructor(private auth: UserAuthenticationService , private http:HttpClient, private activRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activRoute.params.subscribe(x => this.loadRoute(x));
@@ -22,9 +23,14 @@ export class ResidentsPageComponent implements OnInit {
     this.residents = [
       
     ]
+    
   }
 
   private loadRoute(data){
     this.id=data.id;
+    this.http.get(`http://13.58.69.120/${this.id}/get_residents`).subscribe(data=> this.populateResidents(data))
+  }
+  private populateResidents(data){
+    console.log(data)
   }
 }

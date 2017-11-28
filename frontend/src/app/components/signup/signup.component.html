@@ -157,7 +157,7 @@
 
             <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">Room Number</span>
-                <input type="text" #roomNumberName="ngModel" [(ngModel)]="roomnumber" class="form-control" placeholder="251" aria-describedby="sizing-addon1" name="roomnumber-field" required maxlength=3>
+                <input type="text" #roomNumberName="ngModel" [(ngModel)]="roomnumber" class="form-control" placeholder="251" aria-describedby="sizing-addon1" name="roomnumber-field" required maxlength=3 pattern="[\d]{3}">
             </div>
 
             <div class="alert alert-danger"
@@ -165,7 +165,11 @@
                 <ul>
                     <li [hidden]="!roomNumberName.errors.required">
                         Room number required!
-                    </li>    
+                    </li>  
+                    
+                    <li [hidden]="!roomNumberName.errors.pattern">
+                        Room number invalid!
+                    </li> 
                 </ul>
             </div>
 

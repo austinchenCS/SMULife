@@ -4,11 +4,11 @@
     <div class="col-md-4">
       <div class="text-center">
         <h3 class="display-4" id="upload">Upload Profile Photo</h3>
-        <img src="http://www.smu.edu/-/media/Site/AboutSMU/Facts/CampusProfile.ashx?la=en&hash=D3897BD94ACAE5A2817D3F7574DF00F6180A456C" class="img-responsive img-thumbnail mt-4">
+        <img [src]="imageSrc" class="img-responsive img-thumbnail mt-4">
       </div>
-      <label class="custom-file mt-2">
-        <input type="file" id="file2" class="custom-file-input">
-        <span class="custom-file-control"></span>
+      <label class="custom-file mt-2 text-nowrap pr-4">
+        <input (change)="displayPhoto($event)" data-toggle="custom-file" data-target="#profile-photo" type="file" name="profile_photo" accept="image/*" class="custom-file-input">
+        <span id="profile-photo" class="custom-file-control custom-file-name" data-content="Upload profile photo..."></span>
       </label>
     </div>
     <div class="col-md-8">
@@ -213,6 +213,4 @@
       </form>
     </div>
   </div>
-  <div>{{ra | json}}</div>
-  <div>{{student | json}}</div>
 </div>

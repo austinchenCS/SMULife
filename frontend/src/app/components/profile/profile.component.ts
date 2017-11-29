@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  private imageSrc:string="http://www.smu.edu/-/media/Images/News/2017/fall/dallas-hall-with-skyline-16x9ratio.ashx?h=312&w=554&la=en&hash=97B1B37B25C16526952384875E523FE39B31BB0C";
+  private imageNme:string="";
   private student: Student;
   private file: File;
   private edit= false;
@@ -32,5 +34,17 @@ export class ProfileComponent implements OnInit {
   private changesrc(result: any){
       this.src=result.target.result;
       console.log(this.src)
+  }
+  displayPhoto(fileInput) {
+    if (fileInput.target.files && fileInput.target.files[0]) {
+    const reader = new FileReader();
+    this.imageNme = fileInput.target.files[0].name;
+    reader.onload = ((e) => {
+      this.imageSrc = e.target['result'];
+      
+    });
+  
+    reader.readAsDataURL(fileInput.target.files[0]);
+    }
   }
 }

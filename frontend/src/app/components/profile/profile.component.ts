@@ -85,7 +85,10 @@ export class ProfileComponent implements OnInit {
     httparams=httparams.set('ephone', String(this.student.emergencyContactNumber));
     httparams=httparams.set('erelation', this.student.emergencyContactRelation);
     let httparams2= new HttpParams();
-    httparams2= httparams2.set("picture", this.src)
+    httparams2= httparams2.set("picture", this.imageSrc.slice(22));
+    
+    // let slicedString = this.imageSrc.slice(22);
+    // console.log(slicedString);
   this.http.post(`http://13.58.69.120/${this.id}/update`,httparams2, {params: httparams}).subscribe(x => console.log(x))
   }
 }

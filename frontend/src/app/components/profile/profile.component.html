@@ -11,6 +11,7 @@
         <span class="custom-file-control"></span>
       </label>
     </div>
+
     <div class="col-md-8">
     <!-- Form Name -->
       <div class="clearfix"></div>
@@ -200,10 +201,80 @@
             </div>
 
           </div>
-
-        
         </fieldset>
       </form>
+
+      <br>
+
+      <button type="button" class="btn btn-primary border-0 float-left" data-toggle="modal" data-target="#changePasswordModal">
+          Change Password
+      </button>
+
+      <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="addEventModalLabel">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-body">
+                  <form class="bg-light mt-4 p-4">
+                    <div class="form-group">
+                      <label class="col-form-label" for="eventName">Enter Old Password:</label>
+                      <input type="password" class="form-control" id="oldPassword" placeholder="Old Password">
+                    </div>
+
+                    <div class="form-group">
+                      <span class="col-form-label" id="sizing-addon1">Enter New Password:</span>
+                      <input type="password" #passwordName="ngModel" [(ngModel)]="password" class="form-control" placeholder="Enter New Password" aria-describedby="sizing-addon1"  name="new-password-field" required minlength=7>          
+                    </div>
+
+                    <div class="alert alert-danger"
+                    *ngIf="passwordName.errors && passwordName.touched">
+                        <ul>
+                            <li [hidden]="!passwordName.errors.required">
+                                Password is required!
+                            </li>
+        
+                            <li [hidden]="!passwordName.errors.minlength">
+                                Password must be at least 7 characters long!
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                      <span class="col-form-label" id="sizing-addon1">Confirm Password:</span>
+                      <input type="password" #passwordConfirmName="ngModel" [(ngModel)]="passwordconfirm" class="form-control" placeholder="Confirm New Password" aria-describedby="sizing-addon1"  name="passwordconfirm-field" required minlength=7 [pattern]="password">
+                    </div>
+
+                    <div class="alert alert-danger"
+                    *ngIf="passwordConfirmName.errors && passwordConfirmName.touched">
+                            <ul>
+                            <li [hidden]="!passwordConfirmName.errors.required">
+                                You must confirm your password!
+                            </li>
+                            <li [hidden]="!passwordConfirmName.errors.pattern">
+                                Passwords do not match!
+                            </li>
+                        </ul>
+                    </div>
+
+                
+                  </form>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary border-0" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary border-0">Change Password</button>
+              </div>
+
+            </div>
+          </div>
+        </div>  
     </div>
   </div>
   

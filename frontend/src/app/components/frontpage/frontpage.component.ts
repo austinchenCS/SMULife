@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
-  private id: string;
-  private password: string;
+  id: string;
+  password: string;
   
   
   constructor( private http: HttpClient, private auth: UserAuthenticationService, private router: Router) { 

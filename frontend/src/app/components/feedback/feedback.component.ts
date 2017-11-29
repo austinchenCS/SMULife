@@ -10,9 +10,9 @@ import { Feedback } from '../../domain';
   styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent implements OnInit {
-  private id;
-  private type;
-  private newFeedback = new Feedback();
+  id;
+  type;
+  newFeedback = new Feedback();
   public feedback : Feedback[] = [];
   constructor(private http:HttpClient, private auth: UserAuthenticationService, private activRoute: ActivatedRoute) { }
 

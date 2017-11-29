@@ -12,12 +12,12 @@ import { ActivatedRoute } from '@angular/router/';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-  private events: Event[];
-  private event: Event ={
+  events: Event[];
+  event: Event ={
   };
-  private id;
-  private type;
-  private imageSrc:string="http://www.smu.edu/-/media/Images/News/2017/fall/dallas-hall-with-skyline-16x9ratio.ashx?h=312&w=554&la=en&hash=97B1B37B25C16526952384875E523FE39B31BB0C";
+  id;
+  type;
+  imageSrc:string="http://www.smu.edu/-/media/Images/News/2017/fall/dallas-hall-with-skyline-16x9ratio.ashx?h=312&w=554&la=en&hash=97B1B37B25C16526952384875E523FE39B31BB0C";
   
   constructor(private http:HttpClient, private auth: UserAuthenticationService, private activRoute: ActivatedRoute) { 
    this.events=[

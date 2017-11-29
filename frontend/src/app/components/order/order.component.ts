@@ -10,10 +10,10 @@ import { Student, Ra, WorkOrder } from '../../domain';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  private id;
-  private type;
-  private newWorkOrder = new WorkOrder();
-  private workOrders : WorkOrder[] = [
+  id;
+  type;
+  newWorkOrder = new WorkOrder();
+  workOrders : WorkOrder[] = [
     {
       date:new Date(Date.now()),
       orderId:1,

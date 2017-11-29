@@ -10,11 +10,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./residents-page.component.css']
 })
 export class ResidentsPageComponent implements OnInit {
-  private ra : Ra;
-  private id: string;
-  private type;
-  private residents : Student[];
-  private testStudent : Student;
+  ra : Ra;
+  id: string;
+  type;
+  residents : Student[];
+  testStudent : Student;
 
 
   constructor(private auth: UserAuthenticationService , private http:HttpClient, private activRoute: ActivatedRoute) { }

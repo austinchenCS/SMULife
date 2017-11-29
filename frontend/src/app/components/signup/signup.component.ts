@@ -10,21 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
  private enteredPhrase: string="";
-  private raPass: string = "residents are life"
-  private id: string="";
-  private email: string="";
-  private firstname: string="";
-  private lastname: string="";
-  private phonenumber: string="";
-  private password: string="";
-  private passwordconfirm: string="";
-  private dorm: string="";
-  private roomnumber: string="";
-  private isRA: string="";
-  private contactname: string="";
-  private contactnum: string="";
-  private relation: string="";
-  private dorms:Dorm[];
+  raPass: string = "residents are life"
+  id: string="";
+  email: string="";
+  firstname: string="";
+  lastname: string="";
+  phonenumber: string="";
+  password: string="";
+  passwordconfirm: string="";
+  dorm: string="";
+  roomnumber: string="";
+  isRA: string="";
+  contactname: string="";
+  contactnum: string="";
+  relation: string="";
+  dorms:Dorm[];
   constructor(private http: HttpClient) { }
 
   ngOnInit() {

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { UserAuthenticationService } from './../../user-authentication.service';
 
 import { Student, Ra } from './../../domain';
@@ -12,12 +13,12 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileComponent implements OnInit {
   private id;
   private type;
-  private student: Student;
+  private student: Student ={};
   private file: File;
   private edit= false;
   private src:string="";
   private ra: Ra = {};
-  constructor(private auth: UserAuthenticationService , private activRoute: ActivatedRoute ) {
+  constructor(private auth: UserAuthenticationService , private activRoute: ActivatedRoute, private http:HttpClient) {
 
    }
 
@@ -41,5 +42,18 @@ export class ProfileComponent implements OnInit {
   private loadRoute(data){
     this.id=data.id;
     this.type=data.type;
+    this.http.get(`http://13.58.69.120/${this.id}/info`).subscribe(x=> this.profileInfo(x))
+  }
+  private profileInfo(data){
+    this.student={
+      phoneNum:data[0]['phone'],
+      email:data[0]['email'],
+      roomNumber:data[0]['room'],
+      emergencyContactName: data[0]['ename'],
+      emergencyContactNumber: data[0]['ephone'],
+      emergencyContactRelation: data[0]['erelation'],
+      firstName: data[0]['firstname'],
+      lastName: data[0]['lastname']
+    }
   }
 }

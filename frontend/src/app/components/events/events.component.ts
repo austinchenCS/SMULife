@@ -14,6 +14,8 @@ export class EventsComponent implements OnInit {
   private events: Event[];
   private id;
   private type;
+  private imageSrc:string="http://www.smu.edu/-/media/Images/News/2017/fall/dallas-hall-with-skyline-16x9ratio.ashx?h=312&w=554&la=en&hash=97B1B37B25C16526952384875E523FE39B31BB0C";
+  
   constructor(private http:HttpClient, private auth: UserAuthenticationService, private activRoute: ActivatedRoute) { 
    this.events=[
      {
@@ -57,7 +59,17 @@ export class EventsComponent implements OnInit {
       this.events.push(temp)
     }
   }
-
+  displayPhoto(fileInput) {
+    if (fileInput.target.files && fileInput.target.files[0]) {
+    const reader = new FileReader();
+    reader.onload = ((e) => {
+      this.imageSrc = e.target['result'];
+      
+    });
+  
+    reader.readAsDataURL(fileInput.target.files[0]);
+    }
+  }
   private loadRoute(data){
     this.id=data.id;
     this.type=data.type;

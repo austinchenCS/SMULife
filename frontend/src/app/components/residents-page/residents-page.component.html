@@ -4,7 +4,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="lead" scope="col"><a>Select All</a></th>
+      <!-- <th class="lead" scope="col"><a>Select All</a></th> -->
       <th class="lead" scope="col">Resident Name</th>
       <th class="lead" scope="col">Email</th>
       <th class="lead" scope="col">Phone</th>
@@ -13,18 +13,17 @@
   </thead>
   <tbody>
     <tr *ngFor="let resident of residents" >
-      <th scope="row">
+      <!-- <th scope="row">
         <input type="checkbox" aria-label="Checkbox for following text input">
-      </th>
+      </th> -->
       <td><small>{{ resident.firstName }} {{ resident.lastName }}</small></td>
       <td><a [href]="'mailto:' + resident.email"><small>{{ resident.email }}</small></a></td>
       <td><small>{{ resident.phoneNum }}</small></td>
-      <td><small>{{ resident.emergencyContactRelation }} {{ resident.emergencyContactPhone }}</small></td>
       <td><small>{{ resident.roomNumber }}</small></td>
     </tr>
   </tbody>
 </table>
-  <button type="button" class="btn btn-primary border-0" data-toggle="modal" data-target="#emailModal">
+  <!-- <button type="button" class="btn btn-primary border-0" data-toggle="modal" data-target="#emailModal">
     Send Email
   </button>
   
@@ -46,5 +45,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

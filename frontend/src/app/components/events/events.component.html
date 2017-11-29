@@ -2,7 +2,7 @@
 <div class="container jumbotron bg-white mb-0">
   <div class="clearfix">
     <h3 class="display-4 float-left">Events</h3>
-    <button type="button" class="btn btn-primary border-0 float-right" data-toggle="modal" data-target="#addEventModal">
+    <button type="button" class="btn btn-primary border-0 float-right" *ngIf="type=='ra'" data-toggle="modal" data-target="#addEventModal">
       Add Event
     </button>  
     <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel" aria-hidden="true">

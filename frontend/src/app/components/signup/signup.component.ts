@@ -60,7 +60,6 @@ private signUp(){
   urlSearchParams =  urlSearchParams.set('ename', this.contactname);
   urlSearchParams =  urlSearchParams.set('erelation', this.relation);
   urlSearchParams = urlSearchParams.set('ephone', this.contactnum);
-  console.log(urlSearchParams.toString());
   this.http.post("http://13.58.69.120/signup", urlSearchParams).subscribe(data=> this.isSuccess(data))
   
 }

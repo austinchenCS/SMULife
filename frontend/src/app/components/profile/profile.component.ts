@@ -84,9 +84,8 @@ export class ProfileComponent implements OnInit {
     httparams=httparams.set('ename', this.student.emergencyContactName);
     httparams=httparams.set('ephone', String(this.student.emergencyContactNumber));
     httparams=httparams.set('erelation', this.student.emergencyContactRelation);
-    let httparams2=new HttpParams()
+    let httparams2= new HttpParams();
     httparams2= httparams2.set("picture", this.src)
-    let header= new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
-  this.http.put(`http://13.58.69.120/${this.id}/update`,{} ,{ headers: header, params: httparams }).subscribe(x => console.log(x))
+  this.http.post(`http://13.58.69.120/${this.id}/update`,httparams2, {params: httparams}).subscribe(x => console.log(x))
   }
 }

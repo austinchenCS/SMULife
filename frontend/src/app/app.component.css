@@ -4,6 +4,6 @@ html {
 }
 
 .view {
-    background-color: #FBFBFF;    
+
     min-height: calc(100vh - 60px);
 }

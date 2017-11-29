@@ -9,16 +9,16 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href [routerLink]="'/residents'" >Home</a>
+        <a class="nav-link" href [routerLink]="'/'+type+'/'+id+'/residents'" *ngIf="type=='ra'">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href [routerLink]="'/order'">Orders</a>
+        <a class="nav-link" href [routerLink]="'/'+type+'/'+id+'/order'">Orders</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href [routerLink]="'/profile'">My Profile</a>
+        <a class="nav-link" href [routerLink]="'/'+type+'/'+id+'/profile'">My Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href [routerLink]="'/events'">Events</a>
+        <a class="nav-link" href [routerLink]="'/'+type+'/'+id+'/events'">Events</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href [routerLink]="'/feedback'">Feedback</a>

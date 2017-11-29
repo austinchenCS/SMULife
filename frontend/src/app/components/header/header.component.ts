@@ -1,5 +1,6 @@
+import { ActivatedRoute } from '@angular/router/';
 import { UserAuthenticationService } from './../../user-authentication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private auth: UserAuthenticationService  ) { }
+  private _id;
+  private _type;
+  @Input()
+  public get id(): string {
+  return this._id;
+}
+public set id(value: string) {
+  this._id = value;
+}
+@Input()
+public get type(): string {
+  return this._type;
+}
+public set type(value: string) {
+  this._type = value;
+}
+  constructor(private auth: UserAuthenticationService , private activRoute: ActivatedRoute ) { }
 
 
   ngOnInit() {

@@ -2,6 +2,7 @@ import { UserAuthenticationService } from './../../user-authentication.service';
 
 import { Student, Ra } from './../../domain';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,14 +10,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+<<<<<<< HEAD
   private imageSrc:string="http://www.smu.edu/-/media/Images/News/2017/fall/dallas-hall-with-skyline-16x9ratio.ashx?h=312&w=554&la=en&hash=97B1B37B25C16526952384875E523FE39B31BB0C";
   private imageNme:string="";
+=======
+  private id;
+  private type;
+>>>>>>> 485e103d587de79564a65b1524ad1d853f96352b
   private student: Student;
   private file: File;
   private edit= false;
   private src:string="";
   private ra: Ra = {};
-  constructor(private auth: UserAuthenticationService ) {
+  constructor(private auth: UserAuthenticationService , private activRoute: ActivatedRoute ) {
 
    }
 
@@ -24,6 +30,7 @@ export class ProfileComponent implements OnInit {
     this.edit=!this.edit;
   }
   ngOnInit() {
+    this.activRoute.params.subscribe(x => this.loadRoute(x));
   }
   onChange(event) {
      this.file = event.srcElement.files[0];
@@ -46,5 +53,9 @@ export class ProfileComponent implements OnInit {
   
     reader.readAsDataURL(fileInput.target.files[0]);
     }
+  }
+  private loadRoute(data){
+    this.id=data.id;
+    this.type=data.type;
   }
 }

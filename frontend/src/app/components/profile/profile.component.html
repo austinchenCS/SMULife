@@ -1,4 +1,4 @@
-<app-header [(id)]="id" [(type)]="type"></app-header>
+<app-header></app-header>
 <div class="container jumbotron bg-white mb-0">
   <div class="row">
     <div class="col-md-4">
@@ -6,9 +6,10 @@
         <h3 class="display-4" id="upload">Upload Profile Photo</h3>
         <img [src]="imageSrc" class="img-responsive img-thumbnail mt-4">
       </div>
+
       <label class="custom-file mt-2 text-nowrap pr-4">
-        <input (change)="displayPhoto($event)" data-toggle="custom-file" data-target="#profile-photo" type="file" name="profile_photo" accept="image/*" class="custom-file-input">
-        <span id="profile-photo" class="custom-file-control custom-file-name" data-content="Upload profile photo..."></span>
+        <input type="file" id="file2" data-toggle="custom-file" data-target="#profile-photo" type="file" name="profile_photo" accept="image/*" [disabled]="!edit" class="custom-file-input">
+          <span id="profile-photo" class="custom-file-control custom-file-name" data-content="Upload profile photo..."></span>
       </label>
     </div>
     <div class="col-md-8">
@@ -20,10 +21,10 @@
         </div>
         <div class="col-4">
           <button type="button" class="btn btn-primary border-0 float-right" *ngIf="!edit" (click)="editSwitch()">Edit</button>
-          <button type="button" class="btn btn-success border-0 float-right" *ngIf="edit" (click)="editSwitch()">Save</button>
+          <button type="button" class="btn btn-success border-0 float-right" *ngIf="edit"  (click)="editSwitch()" [disabled]="!profileForm.valid">Save</button>
         </div>
       </div> 
-      <form class="form" *ngIf="ra">
+      <form name="profileForm" #profileForm="ngForm">
         <fieldset [disabled]="!edit">
           <div class="form-group">
             <label class="control-label lead" for="Room Number">Room Number</label>
@@ -33,48 +34,71 @@
                   <i class="fa fa-user">
                   </i>
                 </div>
-                <input id="Room Number" name="Room Number" type="text" [(ngModel)]="ra.roomNumber" placeholder="Room Number" class="form-control input-md">
+                <input id="Room Number" #roomNumberName="ngModel" name="Room Number" type="text" [(ngModel)]="student.roomNumber" placeholder="Room Number" class="form-control input-md" required maxlength=3 pattern="[\d]{3}">
               </div>
+
+              <div class="alert alert-danger"
+              *ngIf="roomNumberName.errors && roomNumberName.touched">
+                  <ul>
+                      <li [hidden]="!roomNumberName.errors.required">
+                          Room number required!
+                      </li>  
+                      
+                      <li [hidden]="!roomNumberName.errors.pattern">
+                          Room number invalid!
+                      </li> 
+                  </ul>
+              </div>
+
             </div>
           </div>
-          <div class="form-group">
-            <label class="control-label lead" for="Floor">Floor</label>
-            <div class="">
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-user">
-                  </i>
-                </div>
-                <input id="Floor" name="Floor" type="text" placeholder="Floor" [(ngModel)]="ra.floorNumber" class="form-control input-md">
-              </div>
-            </div>
-          </div>
+          
           <!-- Text input-->
           <div class="form-group">
-            <label class="control-label lead"  for="Name(full name)">First Name</label>
+            <label class="control-label lead"  for="Name(First name)">First Name</label>
             <div class="">
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-birthday-cake">
                   </i>
                 </div>
-                <input id="Name(full name)" name="Name(full name)"  [(ngModel)]="ra.name" type="text" placeholder="First name" class="form-control input-md">
+                <input #firstnameName="ngModel" id="Name(First name)" name="Name(First name)"  [(ngModel)]="student.firstName" type="text" placeholder="First name" class="form-control input-md" required>
               </div>
+
+              <div class="alert alert-danger"
+              *ngIf="firstnameName.errors && firstnameName.touched">
+                  <ul>
+                      <li [hidden]="!firstnameName.errors.required">
+                          First name is required
+                      </li>
+                  </ul>
+              </div>
+
             </div>
           </div>
 
           <!-- Text input-->
           <div class="form-group">
-              <label class="control-label lead"  for="Name(full name)">Last Name</label>
+              <label class="control-label lead"  for="Name(Last name)">Last Name</label>
               <div class="">
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-birthday-cake">
                     </i>
                   </div>
-                  <input id="Name(full name)" name="Name(full name)"  [(ngModel)]="ra.name" type="text" placeholder="Last name" class="form-control input-md">
+                  <input #lastnameName="ngModel" id="Name(Last name)" name="Name(Last name)"  [(ngModel)]="student.lastName" type="text" placeholder="Last name" class="form-control input-md" required>
                 </div>
               </div>
+
+              <div class="alert alert-danger"
+              *ngIf="lastnameName.errors && lastnameName.touched">
+                  <ul>
+                      <li [hidden]="!lastnameName.errors.required">
+                          Last name is required
+                      </li>
+                  </ul>
+              </div>
+
           </div>
 
 
@@ -86,11 +110,26 @@
                 <div class="input-group-addon">
                   <i class="fa fa-female" style="font-size: 20px;"></i>
                 </div>
-                <input id="Email" name="Email" [(ngModel)]="ra.email" type="text" placeholder="Email" class="form-control input-md">
+                <input #emailName="ngModel" id="Email" name="Email" [(ngModel)]="student.email" type="text" placeholder="Email" class="form-control input-md" required pattern="[a-z0-9]+[_a-z0-9\.-]*[a-z0-9]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})">
               </div>
             </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emailName.errors && emailName.touched">
+                <ul>
+                    <li [hidden]="!emailName.errors.required">
+                        Email is required
+                    </li>
+                    <li [hidden]="!emailName.errors.pattern">
+                        Email is not valid
+                    </li>
+                </ul>
+            </div>
+
           </div>
+          
           <h6>Emergency Contact</h6>
+
           <div class="form-group">
             <label class="control-label lead" for="ECName">Name</label>
             <div class="">
@@ -98,10 +137,21 @@
                 <div class="input-group-addon">
                   <i class="fa fa-female" style="font-size: 20px;"></i>  
                 </div>
-                <input id="ECName" name="ECName" [(ngModel)]="ra.emergencyContactName" type="text" placeholder="Name" class="form-control input-md">
+                <input #emergencyContactName="ngModel" id="ECName" name="ECName" [(ngModel)]="student.emergencyContactName" type="text" placeholder="Name" class="form-control input-md" required>
               </div>
             </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emergencyContactName.errors && emergencyContactName.touched">
+                    <ul>
+                    <li [hidden]="!emergencyContactName.errors.required">
+                        Emergency contact FULL name is required
+                    </li>
+                    
+                </ul>
+            </div>
           </div>
+
           <div class="form-group">
             <label class="control-label lead" for="ECPhoneNumber">Phone Number</label>
             <div class="">
@@ -109,106 +159,50 @@
                 <div class="input-group-addon">
                   <i class="fa fa-female" style="font-size: 20px;"></i>
                 </div>
-                <input id="ECPhoneNumber" name="ECPhoneNumber" [(ngModel)]="ra.emergencyContactNumber" type="text" placeholder="Phone Number" class="form-control input-md">
+                <input #emergencyContactNum="ngModel" id="ECPhoneNumber" name="ECPhoneNumber" [(ngModel)]="student.emergencyContactNumber" type="text" placeholder="Phone Number" class="form-control input-md" required pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})">
               </div>
             </div>
-          </div>
-          <!-- Multiple Radios (inline) -->
-          <div class="form-group">
-            <label class="lead" for="relationship">Select Relationship:</label>
-            <select class="form-control" name="emergency relation" [(ngModel)]="ra.emergencyContactRelation" id="relationship">
-              <option>Father</option>
-              <option>Mother</option>
-              <option>Brother</option>
-              <option>Sister</option>
-            </select>
-          </div>
-        </fieldset>
-      </form>
-  
-      <!--  Student form   -->
-      <form class="form" *ngIf="student">
-        <fieldset [disabled]="!edit">
-          <div class="form-group">
-            <label class="control-label lead" for="Room Number">Room Number</label>
-            <div class="">
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-user">
-                  </i>
-                </div>
-                <input id="Room Number" name="Room Number" [(ngModel)]="student.roomNumber" type="text" placeholder="Room Number" class="form-control input-md">
-              </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emergencyContactNum.errors && emergencyContactNum.touched">
+                    <ul>
+                    <li [hidden]="!emergencyContactNum.errors.required">
+                        Emergency contact number is required
+                    </li>
+                    <li [hidden]="!emergencyContactNum.errors.pattern">
+                        Emergency contact number is not valid
+                    </li>
+                </ul>
             </div>
+
           </div>
-          <!-- Text input-->
+
           <div class="form-group">
-            <label class="control-label lead" for="Name(full name)">Name(full name)</label>
-            <div class="">
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-birthday-cake"></i>
-                </div>
-                <input id="Name(full name)" name="Name(full name)"  [(ngModel)]="student.name" type="text" placeholder="Name(full name)" class="form-control input-md">
-              </div>
-            </div>
-          </div>
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="control-label lead" for="ID Number">ID Number</label>
-            <div class="">
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-male" style="font-size: 20px;"></i>
-                </div>
-                <input id="ID Number" name="ID Number" type="text" [(ngModel)]="student.studentId" placeholder="ID Number" class="form-control input-md">
-              </div>
-            </div>
-          </div>
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="control-label lead" for="Email">Email</label>
+            <label class="control-label lead" for="relationship">Relation</label>
             <div class="">
               <div class="input-group">
                 <div class="input-group-addon">
                   <i class="fa fa-female" style="font-size: 20px;"></i>
                 </div>
-                <input id="Email" name="Email" type="text" placeholder="Email" [(ngModel)]="student.email" class="form-control input-md">
+                <input #emergencyContactRelation="ngModel" id="relationship" name="relationship" [(ngModel)]="student.emergencyContactRelation" type="text" placeholder="Relation" class="form-control input-md" required>
               </div>
             </div>
-          </div>
-          <h6>Emergency Contact</h6>
-          <div class="form-group">
-            <label class="control-label lead" for="ECName">Name</label>
-            <div class="">
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-female" style="font-size: 20px;"></i>
-                </div>
-                <input id="ECName" name="ECName" type="text" placeholder="Name" [(ngModel)]="student.emergencyContactName" class="form-control input-md">
-              </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emergencyContactRelation.errors && emergencyContactRelation.touched">
+                    <ul>
+                    <li [hidden]="!emergencyContactRelation.errors.required">
+                        Emergency contact relation is required
+                    </li>
+                    <li [hidden]="!emergencyContactRelation.errors.pattern">
+                        Emergency contact relation is not valid
+                    </li>
+                </ul>
             </div>
+
           </div>
-          <div class="form-group">
-            <label class="control-label lead" for="ECPhoneNumber">Phone Number</label>
-            <div class="">
-              <div class="input-group">
-                <div class="input-group-addon">
-                  <i class="fa fa-female" style="font-size: 20px;"></i>  
-                </div>
-                <input id="ECPhoneNumber" name="ECPhoneNumber" type="text" [(ngModel)]="student.emergencyContactNumber" placeholder="Phone Number" class="form-control input-md">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="leads" for="relationship">Select Relationship:</label>
-            <select class="form-control" id="relationship" name="ecrelation"[(ngModel)]="student.emergencyContactRelation">
-              <option>Father</option>
-              <option>Mother</option>
-              <option>Brother</option>
-              <option>Sister</option>
-            </select>
-          </div>
+
+        
         </fieldset>
       </form>
     </div>

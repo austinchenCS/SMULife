@@ -10,13 +10,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-<<<<<<< HEAD
   private imageSrc:string="http://www.smu.edu/-/media/Images/News/2017/fall/dallas-hall-with-skyline-16x9ratio.ashx?h=312&w=554&la=en&hash=97B1B37B25C16526952384875E523FE39B31BB0C";
   private imageNme:string="";
-=======
   private id;
   private type;
->>>>>>> 485e103d587de79564a65b1524ad1d853f96352b
   private student: Student;
   private file: File;
   private edit= false;

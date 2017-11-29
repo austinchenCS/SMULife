@@ -15,7 +15,16 @@
             </button>
           </div>
           <div class="modal-body">
-            <form class="bg-light p-4">
+              <div class="text-center">
+                <h3 class="display-3">Upload Event Photo</h3>
+                <img [src]="imageSrc" class="img-responsive img-thumbnail pr-4 pl-4 border-0">
+                
+                <label class="custom-file mt-2 mb-4 text-nowrap pr-4">
+                  <input (change)="displayPhoto($event)" data-toggle="custom-file" data-target="#profile-photo" type="file" name="profile_photo" accept="image/*" class="custom-file-input">
+                  <span id="profile-photo" class="custom-file-control custom-file-name"> </span>
+                </label>
+              </div>
+            <form class="bg-light mt-4 p-4">
               <div class="form-group">
                 <label class="col-form-label" for="eventName">Name</label>
                 <input type="text" class="form-control" id="eventName" placeholder="">

@@ -15,5 +15,5 @@ export const COMPONENTS_ROUTES : Routes = [
     { path: ':type/:id/events', component: EventsComponent , canActivate: [AuthGuard]},
     { path: 'login', component: FrontpageComponent },
     { path: 'signup', component: SignupComponent },
-    { path: 'feedback', component: FeedbackComponent }
+    { path: ':type/:id/feedback', component: FeedbackComponent, canActivate: [AuthGuard] }
 ];

@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserAuthenticationService } from './../../user-authentication.service';
 
 import { Student, Ra } from './../../domain';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -24,8 +25,12 @@ export class ProfileComponent implements OnInit {
 
   private editSwitch() {
     this.edit=!this.edit;
+    if(!this.edit){
+      this.updateInfo()
+    }
   }
   ngOnInit() {
+    this.src="dwwg"
     this.activRoute.params.subscribe(x => this.loadRoute(x));
   }
   onChange(event) {
@@ -36,7 +41,6 @@ export class ProfileComponent implements OnInit {
   }
   private changesrc(result: any){
       this.src=result.target.result;
-      console.log(this.src)
   }
 
   private loadRoute(data){
@@ -55,5 +59,21 @@ export class ProfileComponent implements OnInit {
       firstName: data[0]['firstname'],
       lastName: data[0]['lastname']
     }
+    if(data[0]['picture']!=null){
+    this.src=data[0]['picture']
+  }
+  }
+  private updateInfo(){
+    let httparams= new HttpParams();
+    httparams=httparams.set('email', this.student.email);
+    httparams=httparams.set('phone', String(this.student.phoneNum));
+    httparams=httparams.set('room', String(this.student.roomNumber));
+    httparams=httparams.set('ename', this.student.emergencyContactName);
+    httparams=httparams.set('ephone', String(this.student.emergencyContactNumber));
+    httparams=httparams.set('erelation', this.student.emergencyContactRelation);
+    let httparams2=new HttpParams()
+    httparams2= httparams2.set("picture", this.src)
+    let header= new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
+  this.http.put(`http://13.58.69.120/${this.id}/update`,{} ,{ headers: header, params: httparams }).subscribe(x => console.log(x))
   }
 }

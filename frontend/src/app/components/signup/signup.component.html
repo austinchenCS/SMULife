@@ -182,7 +182,7 @@
                 <div class="form-check">
                     <label class="form-check-label">
                       <input type="radio" class="form-check-input" [(ngModel)]="isRA" name="optionsRadios" id="optionsRadios1" value="Student" checked>
-                    Student
+                        Student
                     </label>
                   </div>
                   <div class="form-check">
@@ -193,23 +193,24 @@
                   </div>
             </div>
             <div *ngIf="isRA=='RA'">
-            <div class="input-group">
-                <span class="input-group-addon" id="sizing-addon1">RA Passphrase</span>
-                <input type="password" #raPassPhrase="ngModel" [(ngModel)]="enteredPhrase" class="form-control" placeholder="RA Passphrase" aria-describedby="sizing-addon1"  name="rapass-field" required minlength=7 [pattern]="raPass">
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon1">RA Passphrase</span>
+                    <input type="password" #raPassPhrase="ngModel" [(ngModel)]="enteredPhrase" class="form-control" placeholder="RA Passphrase" aria-describedby="sizing-addon1"  name="rapass-field" required [pattern]="raPass">
+                </div>
+
+                <div class="alert alert-danger"
+                *ngIf="raPassPhrase.errors && raPassPhrase.touched">
+                        <ul>
+                        <li [hidden]="!raPassPhrase.errors.required">
+                            Passphrase is required
+                        </li>
+                        <li [hidden]="!raPassPhrase.errors.pattern">
+                            Passphrase is incorrect!
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="alert alert-danger"
-            *ngIf="raPassPhrase.errors && raPassPhrase.touched">
-                    <ul>
-                    <li [hidden]="!raPassPhrase.errors.required">
-                        Passphrase is required
-                    </li>
-                    <li [hidden]="!raPassPhrase.errors.pattern">
-                        Passphrase is incorrect!
-                    </li>
-                </ul>
-            </div>
-            </div>
             <br>
             <h4>Emergency Contact Information:</h4>
             <br>

@@ -21,30 +21,7 @@ export class EventsComponent implements OnInit {
   
   constructor(private http:HttpClient, private auth: UserAuthenticationService, private activRoute: ActivatedRoute) { 
    this.events=[
-     {
-       eventName: "Home Coming",
-       description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
-     },
-     {
-      eventName: "Finals",
-      description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
-    },
-    {
-      eventName: "Spring Break",
-      description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
-    },
-    {
-     eventName: "Finals Again",
-     description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
-   },
-   {
-    eventName: "Commencement",
-    description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
-  },
-  {
-   eventName: "Unpacking",
-   description: "Lorem ipsum dolor sit amet, est dolorum officiis apeirian ne, duo graecis apeirian ex."
- }
+     
    ]
   }
 

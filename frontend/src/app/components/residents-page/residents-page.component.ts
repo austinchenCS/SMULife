@@ -15,6 +15,8 @@ export class ResidentsPageComponent implements OnInit {
   private type;
   private residents : Student[];
   private testStudent : Student;
+
+
   constructor(private auth: UserAuthenticationService , private http:HttpClient, private activRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -28,9 +30,21 @@ export class ResidentsPageComponent implements OnInit {
 
   private loadRoute(data){
     this.id=data.id;
-    this.http.get(`http://13.58.69.120/${this.id}/get_residents`).subscribe(data=> this.populateResidents(data))
+    this.http.get(`http://13.58.69.120/${this.id}/get_residents`).subscribe(data => this.populateResidents(data))
   }
   private populateResidents(data){
-    console.log(data)
+    for (let resident of data) {
+
+      var tempResident: Student={
+        firstName: resident['firstname'],
+        lastName: resident['lastname'],
+        email: resident['email'],
+        phoneNum: resident['phone'],
+        roomNumber: resident['room']
+      }
+
+      this.residents.push(tempResident)
+    }
+    
   }
 }

@@ -16,10 +16,11 @@
       <th scope="row">
         <input type="checkbox" aria-label="Checkbox for following text input">
       </th>
-      <td><small>{{ resident.name }}</small></td>
-      <td><small>{{ resident.email }}</small></td>
-      <td><small>{{ resident.phone }}</small></td>
+      <td><small>{{ resident.firstName }} {{ resident.lastName }}</small></td>
+      <td><a [href]="'mailto:' + resident.email"><small>{{ resident.email }}</small></a></td>
+      <td><small>{{ resident.phoneNum }}</small></td>
       <td><small>{{ resident.emergencyContactRelation }} {{ resident.emergencyContactPhone }}</small></td>
+      <td><small>{{ resident.roomNumber }}</small></td>
     </tr>
   </tbody>
 </table>

@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.isRA = "student"
     this.dorms = [
       { id: 1, name: 'Armstrong' },
       { id: 2, name: 'Boaz' },
@@ -45,17 +46,29 @@ export class SignupComponent implements OnInit {
     ]
   }
 private signUp(){
+  console.log("Hello");
   console.log(this.isRA);
+  console.log(typeof this.isRA);
+  console.log(this.isRA=="Student");
+  console.log(this.isRA=="RA");
+  console.log(String(this.isRA=="RA"));
+  console.log("We are here");
+
+  var isRaString = "";
+
+  if (this.isRA=="RA") {
+    isRaString = "1";
+  }
   
   let urlSearchParams = new HttpParams();
-  urlSearchParams = urlSearchParams.set('isra', String(this.isRA=="RA"));
+  urlSearchParams = urlSearchParams.set('isra', isRaString);
   urlSearchParams = urlSearchParams.set('firstname', this.firstname);
   urlSearchParams = urlSearchParams.set('lastname', this.lastname);
   urlSearchParams = urlSearchParams.set('email', this.email);
   urlSearchParams = urlSearchParams.set('pass', this.password);
   urlSearchParams = urlSearchParams.set('phone', this.phonenumber);
   urlSearchParams = urlSearchParams.set('id', this.id);
-  urlSearchParams = urlSearchParams.set('dorm', this.dorm);
+  urlSearchParams = urlSearchParams.set('dorm', this.dorm.toLowerCase());
   urlSearchParams = urlSearchParams.set('room', this.roomnumber);
   urlSearchParams =  urlSearchParams.set('ename', this.contactname);
   urlSearchParams =  urlSearchParams.set('erelation', this.relation);
@@ -67,10 +80,10 @@ private isSuccess(status){
   console.log(status[0]['success']);
   
   if(status[0]['success']==true){
-    alert("successful signup")
+    alert("Signup successful! Please return to homepage and log in.")
   }
   else{
-    alert("ID already exists")
+    alert("Error, an account already exists under the provided SMU ID.")
   }
 }
 }

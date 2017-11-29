@@ -18,12 +18,16 @@
       <div class="clearfix"></div>
       <div class="row align-items-center">
         <div class="col-8">
-          <legend><h3 class="display-4">User Profile</h3></legend>
+          <legend><h3 class="display-4">{{ student.firstName }} {{ student.lastName }}</h3></legend>
         </div>
         <div class="col-4">
           <button type="button" class="btn btn-primary border-0 float-right" *ngIf="!edit" (click)="editSwitch()">Edit</button>
           <button type="button" class="btn btn-success border-0 float-right" *ngIf="edit"  (click)="editSwitch()" [disabled]="!profileForm.valid">Save</button>
         </div>
+        <div class="col-8">
+            <h5 id="prof"> User Profile </h5>
+        </div>
+        
       </div> 
       <form name="profileForm" #profileForm="ngForm">
         <fieldset [disabled]="!edit">

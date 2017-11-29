@@ -5,20 +5,35 @@
     <legend>Submit Feedback</legend>
     <div class="form-group">
         <label class="col-form-label" for="feedBackName">Name</label>
-        <input type="text" class="form-control" id="feedBackName" placeholder="">
+        <input type="text" class="form-control" id="feedBackName" placeholder="" name="name" [(ngModel)]="newFeedback.name" required>
     </div>
     <div class="form-group">
       <label class="col-form-label" for="feedBackResidence">Residence Hall</label>
-      <input type="text" class="form-control" id="feedBackResidence" placeholder="">            
+      <input type="text" class="form-control" id="feedBackResidence" placeholder="" name="residenceHall" [(ngModel)]="newFeedback.residenceHall" required>            
     </div>
     <div class="form-group">
         <label class="col-form-label" for="feedBackRa">RA on call</label>
-        <input type="text" class="form-control" id="feedBackRa" placeholder="">            
+        <input type="text" class="form-control" id="feedBackRa" placeholder="" name="raOnCall" [(ngModel)]="newFeedback.raOnCall" required>            
       </div>
     <div class="form-group">
       <label for="feedBackComments">Comments</label>
-      <textarea class="form-control" id="feedBackComments" rows="3"></textarea>
+      <textarea class="form-control" id="feedBackComments" rows="3" name="comments" [(ngModel)]="newFeedback.comments" required></textarea>
     </div>
-    <button type="button" class="btn btn-primary border-0">Submit</button>
+    <button type="reset" class="btn btn-primary border-0" data-toggle="modal" data-target="#feedbackSubmittedModal" (click)="addFeedback()" [disabled]="!newFeedback.name || !newFeedback.residenceHall || !newFeedback.raOnCall || !newFeedback.comments">Submit</button>
   </form>
 </div>
+  <div class="modal fade" id="feedbackSubmittedModal" tabindex="-1" role="dialog" aria-labelledby="feedbackSubmittedModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="feedbackSubmittedModalLabel">Feedback Submitted!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

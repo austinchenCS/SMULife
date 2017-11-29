@@ -1,6 +1,7 @@
 export class WorkOrder {
+    orderId?:number;
     name?: string;
-    dorm?: string;
+    roomNo?: number;
     date?: Date;
     details?: string;
 }

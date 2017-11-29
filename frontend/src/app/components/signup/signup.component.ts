@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
     ]
   }
 private signUp(){
-  console.log(this.isRA);
+  console.log(this.isRA=="RA");
   
   let urlSearchParams = new HttpParams();
   urlSearchParams = urlSearchParams.set('isra', String(this.isRA=="RA"));
@@ -60,7 +60,7 @@ private signUp(){
   urlSearchParams =  urlSearchParams.set('ename', this.contactname);
   urlSearchParams =  urlSearchParams.set('erelation', this.relation);
   urlSearchParams = urlSearchParams.set('ephone', this.contactnum);
-  this.http.post("http://13.58.69.120/signup", urlSearchParams).subscribe(data=> this.isSuccess(data))
+  //this.http.post("http://13.58.69.120/signup", urlSearchParams).subscribe(data=> this.isSuccess(data))
   
 }
 private isSuccess(status){

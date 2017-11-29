@@ -84,7 +84,7 @@ export class EventsComponent implements OnInit {
     httparams=httparams.set('name', this.event.eventName);
     httparams=httparams.set('id', String(this.id));
     httparams=httparams.set('description', String(this.event.description));
-    httparams=httparams.set('picture', this.imageSrc);
+    httparams=httparams.set('picture', this.imageSrc.slice(22));
     this.http.post("http://13.58.69.120/createEvent", httparams).subscribe(x=> console.log(x))
 
     this.events.push(this.event);

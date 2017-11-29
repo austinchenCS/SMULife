@@ -70,10 +70,12 @@ export class ProfileComponent implements OnInit {
       emergencyContactNumber: data[0]['ephone'],
       emergencyContactRelation: data[0]['erelation'],
       firstName: data[0]['firstname'],
-      lastName: data[0]['lastname']
+      lastName: data[0]['lastname'],
+      imageUrl: data[0]['picture']
+
     }
     if(data[0]['picture']!=null){
-    this.src=data[0]['picture']
+  
   }
   }
   private updateInfo(){
@@ -85,7 +87,7 @@ export class ProfileComponent implements OnInit {
     httparams=httparams.set('ephone', String(this.student.emergencyContactNumber));
     httparams=httparams.set('erelation', this.student.emergencyContactRelation);
     let httparams2= new HttpParams();
-    httparams2= httparams2.set("picture", this.imageSrc.slice(22));
+    httparams2= httparams2.set("picture", this.imageSrc);
     
     // let slicedString = this.imageSrc.slice(22);
     // console.log(slicedString);

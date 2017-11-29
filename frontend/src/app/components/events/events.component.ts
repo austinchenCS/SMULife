@@ -57,7 +57,8 @@ export class EventsComponent implements OnInit {
     for(let event of events){
       var temp: Event={
         description: event['description'],
-        eventName: event['eventname']
+        eventName: event['eventname'],
+        image: event['picurl']
       }
       this.events.push(temp)
     }

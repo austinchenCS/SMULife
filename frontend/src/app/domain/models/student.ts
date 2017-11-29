@@ -11,6 +11,7 @@ export class Student {
     emergencyContactName?: string;
     emergencyContactNumber?: number;
     emergencyContactRelation?: string;
+    imageUrl?: string;
     events?: Event[];
     ra?: Ra;
 }

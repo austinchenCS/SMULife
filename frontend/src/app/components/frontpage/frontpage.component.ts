@@ -29,16 +29,21 @@ private login(){
 }
 private authenticate(data){
   if(data){
-console.log(type)
+console.log(data)
+if(data[1]){
   var type=data[1]['type'];
 
-if(type!="failure"){
+if(type&&(type="ra"|| type=="student")){
   this.auth.setLoggedIn();
   this.router.navigateByUrl('/'+type+'/'+this.id+'/profile')
 }
-  }
 else(
   alert("not valid login")
 )
+}
+  }
+  else(
+    alert("not valid login")
+  )
 }
 }

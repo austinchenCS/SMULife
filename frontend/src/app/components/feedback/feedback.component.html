@@ -1,5 +1,5 @@
 <app-header [(id)]="id" [(type)]="type"></app-header>
-<div class="container jumbotron bg-white mb-0">
+<div class="container jumbotron bg-white mb-0" *ngIf="type=='student'">
   <h3 class="display-4">Feedback</h3>  
   <form class="bg-light p-4">
     <legend>Submit Feedback</legend>
@@ -22,6 +22,7 @@
     <button type="reset" class="btn btn-primary border-0" data-toggle="modal" data-target="#feedbackSubmittedModal" (click)="addFeedback()" [disabled]="!newFeedback.name || !newFeedback.residenceHall || !newFeedback.raOnCall || !newFeedback.comments">Submit</button>
   </form>
 </div>
+
   <div class="modal fade" id="feedbackSubmittedModal" tabindex="-1" role="dialog" aria-labelledby="feedbackSubmittedModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -36,4 +37,12 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="card" *ngIf="type=='ra'">
+    <div class="card-header text-center">
+      Feedback
+    </div>
+    <ul class="list-group list-group-flush" >
+      <li class="list-group-item text-center" *ngFor="let feedback of feedbacks">"{{feedback.comments}}"</li>
+    </ul>
   </div>

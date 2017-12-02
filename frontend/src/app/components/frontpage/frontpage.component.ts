@@ -33,7 +33,7 @@ console.log(data)
 if(data[1]){
   var type=data[1]['type'];
 
-if(type&&(type="ra"|| type=="student")){
+if(type&&(type=="ra"|| type=="student")){
   this.auth.setLoggedIn();
   this.router.navigateByUrl('/'+type+'/'+this.id+'/profile')
 }

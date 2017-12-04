@@ -4,9 +4,6 @@
 .btn-primary {
     background-color:#01BAEF;
 }
-.img-thumbnail {
-    opacity:0.2;
-}
 .input-group-addon {
     background-color:#FBFBFF;
     font-size: .9em;
@@ -25,11 +22,18 @@ input.form-control {
 
 .alert {
     margin-top: .75rem;
-    margin-bottom: -.65rem;
+    margin-bottom: 1rem;
 }
 
 .alert ul {
     padding: 0;
     margin: 0;
     list-style-type: none;
+}
+
+#prof {
+    color: grey;
+    font-style: italic;
+    margin-top: .75rem;
+    margin-bottom: .78rem;
 }

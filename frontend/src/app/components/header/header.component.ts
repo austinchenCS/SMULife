@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router/';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserAuthenticationService } from './../../user-authentication.service';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -24,9 +24,12 @@ public get type(): string {
 public set type(value: string) {
   this._type = value;
 }
-  constructor(private auth: UserAuthenticationService , private activRoute: ActivatedRoute ) { }
+  constructor(private auth: UserAuthenticationService , private activRoute: ActivatedRoute, private router : Router ) { }
 
-
+private logout(){
+  this.auth.setLoggedIn();
+  this.router.navigateByUrl('')
+}
   ngOnInit() {
   }
 

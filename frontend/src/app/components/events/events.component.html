@@ -1,6 +1,48 @@
 <app-header [(id)]="id" [(type)]="type"></app-header>
 <div class="container jumbotron bg-white mb-0">
-  <h3 class="display-4">Events</h3>
+  <div class="clearfix">
+    <h3 class="display-4 float-left">Events</h3>
+    <button type="button" class="btn btn-primary border-0 float-right" *ngIf="type=='ra'" data-toggle="modal" data-target="#addEventModal">
+      Add Event
+    </button>  
+    <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addEventModalLabel">Add an Event</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="text-center">
+                <h3 class="display-3">Upload Event Photo</h3>
+                <img [src]="imageSrc" class="img-responsive img-thumbnail pr-4 pl-4 border-0">
+                
+                <label class="custom-file mt-2 mb-4 text-nowrap pr-4">
+                  <input (change)="displayPhoto($event)" data-toggle="custom-file" data-target="#profile-photo" type="file" name="profile_photo" accept="image/*" class="custom-file-input">
+                  <span id="profile-photo" class="custom-file-control custom-file-name"> </span>
+                </label>
+              </div>
+            <form class="bg-light mt-4 p-4">
+              <div class="form-group">
+                <label class="col-form-label" for="eventName">Name</label>
+                <input type="text" name="ename"class="form-control" [(ngModel)]="event.eventName" id="eventName" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="eventDescription">Description</label>
+                <textarea class="form-control" [(ngModel)]="event.description" name="edescription" id="eventDescription" rows="3"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary border-0" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary border-0" (click)="addEvent()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-4 container card-group"  *ngFor="let event of events; let i = index;" >
       <div class="card mt-2 mb-4">

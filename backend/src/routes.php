@@ -267,7 +267,7 @@ use Slim\Http\Response;
 
               // $current_id = $_GET["resident_id"]; //Get query from parameter
               $current_id=$args['current_id'];
-	      $query = "SELECT ra.firstname, ra.lastname FROM ra JOIN student ON substr(ra.room, 1, 1)=substr(student.room, 1, 1) AND ra.dorm=student.dorm WHERE student.id=:current_id;";
+	      $query = "SELECT ra.firstname, ra.lastname, ra.id FROM ra JOIN student ON substr(ra.room, 1, 1)=substr(student.room, 1, 1) AND ra.dorm=student.dorm WHERE student.id=:current_id LIMIT 1;";
               $sth = $this->db->prepare($query);
               $sth->execute(array(':current_id' => $current_id));
               try
@@ -386,7 +386,7 @@ $app->post('/createEvent', function ($request, $response, $args){
         $fileName = hash('sha256', $data) . '.png';
         file_put_contents('../public/' . $fileName,$data);
 }
-
+	$data=base64_encode($data);
         $picurl = $fileName;
 //	$picurl = $data;
 
@@ -394,8 +394,9 @@ $app->post('/createEvent', function ($request, $response, $args){
         $sth = $this->db->prepare($query);
         $sth->execute(array(":eventname" => $eventname, ":description" => $description, ":uid" => $uid, ":picurl" => $picurl));
         //$todos = 'Query Submitted';
-	$todos = array(array(success => True));
-        return $this->response->withJson($todos);
+	//$todos = array(array(success => True));
+        $todos=$data;
+	return $this->response->withJson($todos);
     });
 
 //work order post request, inserts into worder table
@@ -504,12 +505,13 @@ $app->post('/{id}/update',function($request,$response,$args){
 
   $app->get('/{ra_id}/getStudentOrders', function ($request, $response, $args) {
 
+			
+
                         // $current_id = $_GET["resident_id"]; //Get query from parameter
                         $ra_id=$args['ra_id'];
                         $query = "SELECT student.firstname, student.lastname, worder.description, student.room, student.dorm 
                         FROM ra JOIN student ON substr(ra.room, 1, 1)=substr(student.room, 1, 1) AND ra.dorm=student.dorm
-                        JOIN worder ON worder.id=student.id OR worder.id=ra.id
-                        WHERE ra.id=:ra_id;";
+                        JOIN worder ON worder.id=student.id; -- OR worder.id=ra.id;";
                         $sth = $this->db->prepare($query);
                         $sth->execute(array(":ra_id"=>$ra_id));
                         try

@@ -1,0 +1,275 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href [routerLink]="'/login'">
+        <div class="display-4"><span class="font-weight-bold">SMU</span><span>life</span></div>
+    </a>
+</nav>  
+
+<div class="jumbotron vertical-center mt-4 p-5">
+    <div class="container text-center">
+        <div class="input-center">
+            <h3>Sign-Up</h3>
+            <hr class="my-4">   
+
+
+            <form name="loginForm" #loginForm="ngForm">  
+
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">SMU ID</span>
+                <input type="text" name="SMU ID" [(ngModel)]="id" #idName="ngModel" class="form-control" placeholder="Ex. 467938102" aria-describedby="sizing-addon1" required minlength=8 maxlength=8 pattern="[\d+]{8}">
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="idName.errors && idName.touched">
+                <ul>
+                    <li [hidden]="!idName.errors.required">
+                        SMU ID is required
+                    </li>
+                    <li [hidden]="!idName.errors.pattern">
+                        SMU ID is not valid
+                    </li>
+                </ul>
+            </div>
+            <br>
+
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Email</span>
+                <input type="text" name="email-field" #emailName="ngModel" [(ngModel)]="email" class="form-control" placeholder="Email" aria-describedby="sizing-addon1" required pattern="[a-z0-9]+[_a-z0-9\.-]*[a-z0-9]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})">
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emailName.errors && emailName.touched">
+                <ul>
+                    <li [hidden]="!emailName.errors.required">
+                        Email is required
+                    </li>
+                    <li [hidden]="!emailName.errors.pattern">
+                        Email is not valid
+                    </li>
+                </ul>
+            </div>
+
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">First name</span>
+                <input type="text" #firstnameName="ngModel" [(ngModel)]="firstname" class="form-control" placeholder="First name" aria-describedby="sizing-addon1" name="firstname-field" required>
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="firstnameName.errors && firstnameName.touched">
+                <ul>
+                    <li [hidden]="!firstnameName.errors.required">
+                        First name is required
+                    </li>
+                </ul>
+            </div>
+
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Last name</span>
+                <input type="text" #lastnameName="ngModel" [(ngModel)]="lastname" class="form-control" placeholder="Last name" aria-describedby="sizing-addon1" name="lastname-field" required>
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="lastnameName.errors && lastnameName.touched">
+                <ul>
+                    <li [hidden]="!lastnameName.errors.required">
+                        Last name is required
+                    </li>
+                    <li [hidden]="!lastnameName.errors.pattern">
+                        Last name is not valid
+                    </li>
+                </ul>
+            </div>
+
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Phone Number</span>
+                <input type="text" #phoneName="ngModel" [(ngModel)]="phonenumber" class="form-control" placeholder="Ex. 555-555-555" aria-describedby="sizing-addon1" name="phonenumber-field" required pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})">
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="phoneName.errors && phoneName.touched">
+                <ul>
+                    <li [hidden]="!phoneName.errors.required">
+                        Phone Number is required
+                    </li>
+                    <li [hidden]="!phoneName.errors.pattern">
+                        Phone number is not valid
+                    </li>
+                </ul>
+            </div>
+
+            <br>
+    
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Password</span>
+                <input type="password" #passwordName="ngModel" [(ngModel)]="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1"  name="password-field" required minlength=7>
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="passwordName.errors && passwordName.touched">
+                <ul>
+                    <li [hidden]="!passwordName.errors.required">
+                        Password is required
+                    </li>
+
+                    <li [hidden]="!passwordName.errors.minlength">
+                        Password must be at least 7 characters long!
+                    </li>
+                </ul>
+            </div>
+
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Confirm Password</span>
+                <input type="password" #passwordConfirmName="ngModel" [(ngModel)]="passwordconfirm" class="form-control" placeholder="Confirm Password" aria-describedby="sizing-addon1"  name="passwordconfirm-field" required minlength=7 [pattern]="password">
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="passwordConfirmName.errors && passwordConfirmName.touched">
+                    <ul>
+                    <li [hidden]="!passwordConfirmName.errors.required">
+                        You must confirm your password
+                    </li>
+                    <li [hidden]="!passwordConfirmName.errors.pattern">
+                        Passwords do not match!
+                    </li>
+                </ul>
+            </div>
+
+            <br>
+
+            <h5>Residential Commons</h5>
+            <br>
+
+            <select id="dormID"
+                class="form-control"
+                name="dormID"
+                [(ngModel)]="dorm"
+                #dormId="ngModel">
+                <option selected>Select your Residential Commons</option>
+                <option *ngFor="let dorm of dorms"
+                    [value]="dorm.name">
+                    {{ dorm.name }}
+                </option>
+            </select>
+            <br>
+
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Room Number</span>
+                <input type="text" #roomNumberName="ngModel" [(ngModel)]="roomnumber" class="form-control" placeholder="251" aria-describedby="sizing-addon1" name="roomnumber-field" required maxlength=3 pattern="[\d]{3}">
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="roomNumberName.errors && roomNumberName.touched">
+                <ul>
+                    <li [hidden]="!roomNumberName.errors.required">
+                        Room number required!
+                    </li>  
+                    
+                    <li [hidden]="!roomNumberName.errors.pattern">
+                        Room number invalid!
+                    </li> 
+                </ul>
+            </div>
+
+            <br>
+            
+            <h5>I am a...</h5>
+            <br>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" [(ngModel)]="isRA" name="optionsRadios" id="optionsRadios1" value="Student" checked>
+                        Student
+                    </label>
+                  </div>
+                  <div class="form-check">
+                  <label class="form-check-label">
+                      <input type="radio" class="form-check-input"  [(ngModel)]="isRA" name="optionsRadios" id="optionsRadios2" value="RA">
+                     RA
+                    </label>
+                  </div>
+            </div>
+            <div *ngIf="isRA=='RA'">
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon1">RA Passphrase</span>
+                    <input type="password" #raPassPhrase="ngModel" [(ngModel)]="enteredPhrase" class="form-control" placeholder="RA Passphrase" aria-describedby="sizing-addon1"  name="rapass-field" required [pattern]="raPass">
+                </div>
+
+                <div class="alert alert-danger"
+                *ngIf="raPassPhrase.errors && raPassPhrase.touched">
+                        <ul>
+                        <li [hidden]="!raPassPhrase.errors.required">
+                            Passphrase is required
+                        </li>
+                        <li [hidden]="!raPassPhrase.errors.pattern">
+                            Passphrase is incorrect!
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <br>
+            <h4>Emergency Contact Information:</h4>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Full Name</span>
+                <input type="text" #emergencyContactName="ngModel" [(ngModel)]="contactname" class="form-control" placeholder="Ex. Johnathan Tiberius Appleseed" aria-describedby="sizing-addon1" name="emergencyContactName-field" required>
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emergencyContactName.errors && emergencyContactName.touched">
+                    <ul>
+                    <li [hidden]="!emergencyContactName.errors.required">
+                        Full name is required
+                    </li>
+                    
+                </ul>
+            </div>
+
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Number</span>
+                <input type="text" #emergencyContactNum="ngModel" [(ngModel)]="contactnum" class="form-control" placeholder="Ex. 555-555-555" aria-describedby="sizing-addon1" name="emergencyContactNum-field" required pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})">
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emergencyContactNum.errors && emergencyContactNum.touched">
+                    <ul>
+                    <li [hidden]="!emergencyContactNum.errors.required">
+                        Emergency contact number is required
+                    </li>
+                    <li [hidden]="!emergencyContactNum.errors.pattern">
+                        Emergency contact number is not valid
+                    </li>
+                </ul>
+            </div>
+            <br>
+
+            <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">Relation</span>
+                <input type="text" #emergencyContactRelation="ngModel" [(ngModel)]="relation" class="form-control" placeholder="Ex. Father" aria-describedby="sizing-addon1" name="emergencyContactRelation-field" required>
+            </div>
+            <div class="alert alert-danger"
+            *ngIf="emergencyContactRelation.errors && emergencyContactRelation.touched">
+                    <ul>
+                    <li [hidden]="!emergencyContactRelation.errors.required">
+                        Emergency Contact relation is required
+                    </li>
+                    <li [hidden]="!emergencyContactRelation.errors.pattern">
+                        Emergency Contact relation is not valid
+                    </li>
+                </ul>
+            </div>
+
+            <br>
+
+            <button class="btn btn-primary border-0" [disabled]="!loginForm.valid" (click)="signUp()">Sign Up</button>
+            </form>
+
+            <br> 
+        </div>
+    </div>
+</div>

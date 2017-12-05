@@ -1,0 +1,310 @@
+<app-header [(id)]="id" [(type)]="type"></app-header>
+<div class="container jumbotron bg-white mb-0">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="text-center">
+        <h3 class="display-4" id="upload">Upload Profile Photo</h3>
+        <img [src]="imageSrc" class="img-responsive img-thumbnail mt-4">
+      </div>
+
+      <label class="custom-file mt-2 text-nowrap pr-4">
+        <input type="file" id="file2" data-toggle="custom-file" data-target="#profile-photo" type="file" name="profile_photo" accept="image/*" [disabled]="!edit" class="custom-file-input" (change)="displayPhoto($event)">
+          <span id="profile-photo" class="custom-file-control custom-file-name" data-content="Upload profile photo..."></span>
+      </label>
+    </div>
+
+    <div class="col-md-8">
+    <!-- Form Name -->
+      <div class="clearfix"></div>
+      <div class="row align-items-center">
+        <div class="col-8">
+          <legend><h3 class="display-4">{{ student.firstName }} {{ student.lastName }}</h3></legend>
+        </div>
+        <div class="col-4">
+          <button type="button" class="btn btn-primary border-0 float-right" *ngIf="!edit" (click)="editSwitch()">Edit</button>
+          <button type="button" class="btn btn-success border-0 float-right" *ngIf="edit"  (click)="editSwitch()" [disabled]="!profileForm.valid">Save</button>
+        </div>
+        <div class="col-8">
+            <h5 id="prof"> User Profile </h5>
+        </div>
+        
+      </div> 
+      <form name="profileForm" #profileForm="ngForm">
+        <fieldset [disabled]="!edit">
+          <div class="form-group">
+            <label class="control-label lead" for="Room Number">Room Number</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-user">
+                  </i>
+                </div>
+                <input id="Room Number" #roomNumberName="ngModel" name="Room Number" type="text" [(ngModel)]="student.roomNumber" placeholder="Room Number" class="form-control input-md" required maxlength=3 pattern="[\d]{3}">
+              </div>
+
+              <div class="alert alert-danger"
+              *ngIf="roomNumberName.errors && roomNumberName.touched">
+                  <ul>
+                      <li [hidden]="!roomNumberName.errors.required">
+                          Room number required!
+                      </li>  
+                      
+                      <li [hidden]="!roomNumberName.errors.pattern">
+                          Room number invalid!
+                      </li> 
+                  </ul>
+              </div>
+
+            </div>
+          </div>
+          
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="control-label lead"  for="Name(First name)">First Name</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-birthday-cake">
+                  </i>
+                </div>
+                <input #firstnameName="ngModel" id="Name(First name)" name="Name(First name)"  [(ngModel)]="student.firstName" type="text" placeholder="First name" class="form-control input-md" required>
+              </div>
+
+              <div class="alert alert-danger"
+              *ngIf="firstnameName.errors && firstnameName.touched">
+                  <ul>
+                      <li [hidden]="!firstnameName.errors.required">
+                          First name is required
+                      </li>
+                  </ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+              <label class="control-label lead"  for="Name(Last name)">Last Name</label>
+              <div class="">
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-birthday-cake">
+                    </i>
+                  </div>
+                  <input #lastnameName="ngModel" id="Name(Last name)" name="Name(Last name)"  [(ngModel)]="student.lastName" type="text" placeholder="Last name" class="form-control input-md" required>
+                </div>
+              </div>
+
+              <div class="alert alert-danger"
+              *ngIf="lastnameName.errors && lastnameName.touched">
+                  <ul>
+                      <li [hidden]="!lastnameName.errors.required">
+                          Last name is required
+                      </li>
+                  </ul>
+              </div>
+
+          </div>
+
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="control-label lead" for="Email">Email</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-female" style="font-size: 20px;"></i>
+                </div>
+                <input #emailName="ngModel" id="Email" name="Email" [(ngModel)]="student.email" type="text" placeholder="Email" class="form-control input-md" required pattern="[a-z0-9]+[_a-z0-9\.-]*[a-z0-9]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})">
+              </div>
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emailName.errors && emailName.touched">
+                <ul>
+                    <li [hidden]="!emailName.errors.required">
+                        Email is required
+                    </li>
+                    <li [hidden]="!emailName.errors.pattern">
+                        Email is not valid
+                    </li>
+                </ul>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+              <label class="control-label lead" for="phoneNum">Phone Number</label>
+              <div class="">
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-female" style="font-size: 20px;"></i>
+                  </div>
+                  <input #phoneName="ngModel" id="phoneNum" name="phoneNum" [(ngModel)]="student.phoneNum" type="text" placeholder="Phone Number" class="form-control input-md" required pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})">
+                </div>
+              </div>
+  
+              <div class="alert alert-danger"
+              *ngIf="phoneName.errors && phoneName.touched">
+                      <ul>
+                      <li [hidden]="!phoneName.errors.required">
+                          Your phone number is required
+                      </li>
+                      <li [hidden]="!phoneName.errors.pattern">
+                          Your phone number is not valid
+                      </li>
+                  </ul>
+              </div>
+  
+            </div>
+          
+          <h6>Emergency Contact</h6>
+
+          <div class="form-group">
+            <label class="control-label lead" for="ECName">Name</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-female" style="font-size: 20px;"></i>  
+                </div>
+                <input #emergencyContactName="ngModel" id="ECName" name="ECName" [(ngModel)]="student.emergencyContactName" type="text" placeholder="Name" class="form-control input-md" required>
+              </div>
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emergencyContactName.errors && emergencyContactName.touched">
+                    <ul>
+                    <li [hidden]="!emergencyContactName.errors.required">
+                        Emergency contact FULL name is required
+                    </li>
+                    
+                </ul>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label lead" for="ECPhoneNumber">Phone Number</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-female" style="font-size: 20px;"></i>
+                </div>
+                <input #emergencyContactNum="ngModel" id="ECPhoneNumber" name="ECPhoneNumber" [(ngModel)]="student.emergencyContactNumber" type="text" placeholder="Phone Number" class="form-control input-md" required pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})">
+              </div>
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emergencyContactNum.errors && emergencyContactNum.touched">
+                    <ul>
+                    <li [hidden]="!emergencyContactNum.errors.required">
+                        Emergency contact number is required
+                    </li>
+                    <li [hidden]="!emergencyContactNum.errors.pattern">
+                        Emergency contact number is not valid
+                    </li>
+                </ul>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label class="control-label lead" for="relationship">Relation</label>
+            <div class="">
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-female" style="font-size: 20px;"></i>
+                </div>
+                <input #emergencyContactRelation="ngModel" id="relationship" name="relationship" [(ngModel)]="student.emergencyContactRelation" type="text" placeholder="Relation" class="form-control input-md" required>
+              </div>
+            </div>
+
+            <div class="alert alert-danger"
+            *ngIf="emergencyContactRelation.errors && emergencyContactRelation.touched">
+                    <ul>
+                    <li [hidden]="!emergencyContactRelation.errors.required">
+                        Emergency contact relation is required
+                    </li>
+                    <li [hidden]="!emergencyContactRelation.errors.pattern">
+                        Emergency contact relation is not valid
+                    </li>
+                </ul>
+            </div>
+
+          </div>
+        </fieldset>
+      </form>
+
+      <br>
+
+      <button *ngIf=false type="button" class="btn btn-primary border-0 float-left" data-toggle="modal" data-target="#changePasswordModal">
+          Change Password
+      </button>
+
+      <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="addEventModalLabel">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div class="modal-body">
+                  <form class="bg-light mt-4 p-4">
+                    <div class="form-group">
+                      <label class="col-form-label" for="eventName">Enter Old Password:</label>
+                      <input type="password" class="form-control" id="oldPassword" placeholder="Old Password">
+                    </div>
+
+                    <div class="form-group">
+                      <span class="col-form-label" id="sizing-addon1">Enter New Password:</span>
+                      <input type="password" #passwordName="ngModel" [(ngModel)]="password" class="form-control" placeholder="Enter New Password" aria-describedby="sizing-addon1"  name="new-password-field" required minlength=7>          
+                    </div>
+
+                    <div class="alert alert-danger"
+                    *ngIf="passwordName.errors && passwordName.touched">
+                        <ul>
+                            <li [hidden]="!passwordName.errors.required">
+                                Password is required!
+                            </li>
+        
+                            <li [hidden]="!passwordName.errors.minlength">
+                                Password must be at least 7 characters long!
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group">
+                      <span class="col-form-label" id="sizing-addon1">Confirm Password:</span>
+                      <input type="password" #passwordConfirmName="ngModel" [(ngModel)]="passwordconfirm" class="form-control" placeholder="Confirm New Password" aria-describedby="sizing-addon1"  name="passwordconfirm-field" required minlength=7 [pattern]="password">
+                    </div>
+
+                    <div class="alert alert-danger"
+                    *ngIf="passwordConfirmName.errors && passwordConfirmName.touched">
+                            <ul>
+                            <li [hidden]="!passwordConfirmName.errors.required">
+                                You must confirm your password!
+                            </li>
+                            <li [hidden]="!passwordConfirmName.errors.pattern">
+                                Passwords do not match!
+                            </li>
+                        </ul>
+                    </div>
+
+                
+                  </form>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary border-0" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary border-0">Change Password</button>
+              </div>
+
+            </div>
+          </div>
+        </div>  
+    </div>
+  </div>
+</div>

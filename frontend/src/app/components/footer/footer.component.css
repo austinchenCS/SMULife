@@ -1,0 +1,12 @@
+p {
+    font-size: .9em;
+    display:inline;
+    color:#000;
+}
+.footer {
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+    background-color:rgb(226, 226, 226);
+}
